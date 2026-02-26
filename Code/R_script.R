@@ -14,4 +14,6 @@ library(terra)
 install.packages("devtools")  #remotes
 library(devtools)
 install_github("ducciorocchini/imageRy")
-  
+library(imageRy)
+im.list()
+
