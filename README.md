@@ -1,10 +1,7 @@
 # Telerilevamento_2026 🛰️
 Code developed during Rocchini's course
 
-
 ![sentinel-2](https://github.com/user-attachments/assets/48b64a69-67c8-41fa-bd60-d8bd895db87a)
-
-
 
 ## Cosa è? 📘
 Questo repo contiene il codice del corso di Telerilevamento Geo-Ecologico presso UNIBO:
