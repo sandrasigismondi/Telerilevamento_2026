@@ -7,5 +7,16 @@ library(imageRy)
 im.list()
 
 #importing images
-im.import.R
+b2<- im.import("sentinel.dolomites.b2.tif")
+
+#changing colours
+cl <- colorRampPalette(c("darkolivegreen", "brown1", "gold"))(100)
+plot(b2, col=cl)
+
+cl <- colorRampPalette(c("darkolivegreen", "brown1", "gold"))(3)
+plot(b2, col=cl)
+
+
+
+
 
