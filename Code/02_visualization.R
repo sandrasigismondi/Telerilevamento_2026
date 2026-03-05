@@ -79,6 +79,29 @@ plot(b4, col=inferno(100))
 plot(b8, col=inferno(100))
 
 
+#stack
+#sist rife
+sentinel <- c(b2,b3,b4,b8)
+plot(sentinel)
+plot(sentinel, col=inferno(100))
+
+b2
+sentinel
+names(sentinel)
+
+plot(sentinel$sentinel.dolomites.b8)
+
+#layer1=b2, layer2=b3, layer4=b3, layer4=b8
+plot(sentinel[[4]])
+plot(sentinel[[2]])
+
+
+
+
+
+
+
+
 
 
 
