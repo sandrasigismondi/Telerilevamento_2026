@@ -44,13 +44,17 @@ plot(b2, col=cl)
 plot(b2, col=inferno(100))
 
 
+#######
+clb<-colorRampPalette(c("dark blue", "blue", "light blue"))(100)
+plot(b2, col=clb)
 
+clg<-colorRampPalette(c("dark green", "green", "light green"))(100)
+plot(b3, col=clg)
 
+cln<-colorRampPalette(c("goldenrod3", "goldenrod2", "goldenrod"))(100)
+plot(b8, col=cln)
 
-
-
-
-
-
-
-
+plot(b2, col=inferno(100))
+plot(b3, col=inferno(100))
+plot(b4, col=inferno(100))
+plot(b8, col=inferno(100))
