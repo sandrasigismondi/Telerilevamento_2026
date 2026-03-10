@@ -165,6 +165,21 @@ im.plotRGB(sentinel, r=4, g=2, b=3)
 
 pairs(sentinel)
 
+#simplifying the function
+im.plotRGB(sentinel, 4, 2, 3)
+
+#plotRGB from terra
+plotRGB(sentinel, 4, 2, 3)
+#da errore
+
+plotRGB(sentinel, 4, 2, 3, stretch="lin")
+plotRGB(sentinel, 4, 2, 3, stretch="hist")
+
+
+
+
+
+
 
 
 
