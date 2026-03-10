@@ -106,6 +106,10 @@ library(terra)
 library(imageRy)
 install.packages("patchwork")
 library(patchwork)
+install.packages("GGally")
+library(GGally)
+###ggpairs servirebbe un dataframe, lo abbiamo messo per provarlo ma lo faremo più avanti
+
 
 im.list()
 b2 <- im.import("sentinel.dolomites.b2.tif")
@@ -125,6 +129,41 @@ p1+p2
 #2 im.multiframe(1,2)
 #3 stack
 #4 ggplot2 patchwork
+
+# RGB plotting
+sentinel <- c(b2, b3, b4, b8)
+sentinel
+# 1=b2 blue, 2=b3 green, 3=b4 red, 4=b8 nir infrarosso vicino (alla banda del visibile)
+
+
+im.multiframe(1,2)
+
+#abbiamo a disposizione 3 filtri e 4 bande, devo fare una scelta. uso solo bande del visibile
+im.plotRGB(sentinel, r=3, g=2, b=1)
+#natural colors
+
+#in rosso abbiamo messo il vicino infrarosso, il resto li abbiamo spostati e levato il blu
+im.plotRGB(sentinel, r=4, g=3, b=2)
+#false colors
+
+plot(sentinel[[4]])
+im.plotRGB(sentinel, r=4, g=3, b=2)
+
+#uso infrarosso in componente green g=4
+im.plotRGB(sentinel, r=3, g=4, b=2)
+
+#excersice: NIR on topo on the blue component of the RGB scheme
+im.plotRGB(sentinel, r=3, g=2, b=4)
+
+#plot the four manners of RGB in a single multiframe
+im.multiframe(2,2)
+
+# positioning of visible bands
+im.multiframe(1,2)
+im.plotRGB(sentinel, r=4, g=3, b=2)
+im.plotRGB(sentinel, r=4, g=2, b=3)
+
+pairs(sentinel)
 
 
 
