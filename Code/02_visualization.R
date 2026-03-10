@@ -99,11 +99,32 @@ plot(sentinel[[4]])
 plot(sentinel[[2]])
 
 
+###################visualization temp su duccio 10/03
+library(viridis)
+libray(ggplot2)
+library(terra)
+library(imageRy)
+install.packages("patchwork")
+library(patchwork)
 
+im.list()
+b2 <- im.import("sentinel.dolomites.b2.tif")
+b3 <- im.import("sentinel.dolomites.b3.tif")
+b4 <- im.import("sentinel.dolomites.b4.tif")
+b8 <- im.import("sentinel.dolomites.b8.tif")
 
+im.ggplot(b8)
 
+p1 <- im.ggplot(b8)
+p2 <- im.ggplot(b4)
 
+p1+p2
 
+# Multiframe:
+#1 par(mf=c(1,2))
+#2 im.multiframe(1,2)
+#3 stack
+#4 ggplot2 patchwork
 
 
 
