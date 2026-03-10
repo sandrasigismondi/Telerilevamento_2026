@@ -43,6 +43,9 @@ im.multiframe<- (1,2)
 plot(b2, col=cl)
 plot(b2, col=inferno(100))
 
+b3 <- im.import("sentinel.dolomites.b3.tif")
+b4 <- im.import("sentinel.dolomites.b4.tif")
+b8 <- im.import("sentinel.dolomites.b8.tif")
 
 ##5/03
 ####andrea
