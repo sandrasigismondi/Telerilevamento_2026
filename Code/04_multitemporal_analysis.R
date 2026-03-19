@@ -44,10 +44,8 @@ dif <- gr[[4]] - gr[[1]]
 dev.off()
 plot(dif)
 
-
-
-# ridgeline plots
-
+# RGB
+im.plotRGB(gr, r=1, g=2, b=4)
 
 
 
