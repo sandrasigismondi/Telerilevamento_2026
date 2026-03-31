@@ -1,5 +1,14 @@
 ###### code for performing multitemporal analysis with satellite imagery
 
+library(devtools)
+
+install.packages("remotes")
+
+remotes::install_github("ducciorocchini/imageRy")
+
+##########
+
+
 library(terra)
 library(imageRy)
 library(viridis)
@@ -49,20 +58,40 @@ im.plotRGB(gr, r=1, g=2, b=4)
 
 
 
+#######################31/03
+library(terra)
+library(imageRy)
+library(viridis)
+library(ggplot2)
+
+install.packages("ggridges")
 
 
+#
+ndvi<-im.import("Sentinel2_NDVI_2020")
+ndvi
+plot(ndvi, col=magma(100))
+hist(ndvi)
+
+im.ridgeline(ndvi, scale=1, palette="viridis")
+
+names(ndvi)<- c("02_feb", "05_may", "08_aug", "11_nov")
+
+im.ridgeline(ndvi, scale=2, palette="mako")
+
+pairs(ndvi)
+plot(ndvi[[1]], ndvi[[2]])
+
+# y= x
+# y= a +bx
+# Y=0+1x=x
+# a=0
+#b=1
 
 
-
-
-
-
-
-
-
-
-
-
+abline(0,1)
+plot(ndvi[[1]], ndvi[[2]], xlim=c(-0.3,0.9), ylim=c(-0.3,0.9))
+abline(0,1, col="red")
 
 
 
