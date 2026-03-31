@@ -1,14 +1,5 @@
 ###### code for performing multitemporal analysis with satellite imagery
 
-library(devtools)
-
-install.packages("remotes")
-
-remotes::install_github("ducciorocchini/imageRy")
-
-##########
-
-
 library(terra)
 library(imageRy)
 library(viridis)
