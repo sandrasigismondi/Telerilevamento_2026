@@ -74,6 +74,13 @@ p1+p2
 dev.off()
 
 #import from git
+#link ti data
+
+https://github.com/ducciorocchini/Telerilevamento_2026/tree/main/Drone
+DJI_20260331174728_0001_MS_NIR.TIF
+
+nirgit<-rast("https://raw.githubusercontent.com/ducciorocchini/Telerilevamento_2026/main/Drone/DJI_20260331174728_0001_MS_NIR.TIF")
+plot(nirgit)
 
 
 
