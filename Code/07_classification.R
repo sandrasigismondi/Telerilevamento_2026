@@ -35,7 +35,67 @@ sud<-flip(sud)
 plot(sud)
 sudc<-im.classify(sud, num_clusters=2)
 
+#mato grosso example
+im.list()
+m2006<-im.import("matogrosso_ast_2006209_lrg.jpg")
+m1992<-im.import("matogrosso_l5_1992219_lrg.jpg")
+
+im.multiframe(2,1)
+plot(m1992)
+plot(m2006)
+
+#land cover
+dev.off()
+m1992c<-im.classify(m1992, seed=42, num_clusters=2)
+
+# Assign labels
+levels(m1992c) <- data.frame(
+  value = c(1, 2),
+  label = c("forest", "human")
+)
+m1992c
+plot(m1992c)
+
+
+m2006c<-im.classify(m2006, seed=42, num_clusters=2)
+levels(m2006c) <- data.frame(
+  value = c(2, 1),
+  label = c("forest", "human")
+)
+plot(m2006c)
+
 #
+setwd("C:\\Users\\fabis\\Downloads\\Uni\\SGN Magistrale\\Telerilevamento Geo-Eco in R")
+
+#defyning the function
+source("im.barplot.R") #non funziona
+
+#calculating frequencies
+f1992<-freq(m1992c)
+f2006<-freq(m2006c)
+
+#proportions
+prop1992<-f1992$count/ncell(m1992c)
+prop2006<-f2006$count/ncell(m2006c)
+
+#%
+perc1992<-prop1992*100
+perc2006<-prop2006*100
+
+#table (dataframe)
+tabout<-data.frame(
+  class=c("Forest", "Huuman"),
+  perc1992=c(83, 17),
+  perc2006=c(45, 55)
+  )
+
+
+
+
+
+
+
+
 
 
 
