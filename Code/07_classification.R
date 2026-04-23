@@ -84,17 +84,29 @@ perc2006<-prop2006*100
 
 #table (dataframe)
 tabout<-data.frame(
-  class=c("Forest", "Huuman"),
+  class=c("Forest", "Human"),
   perc1992=c(83, 17),
   perc2006=c(45, 55)
   )
 
 
+#####################
+library(ggplot2)
+library(patchwork)
 
 
+p1<-ggplot(tabout, aes(x=class, y=perc1992, color=class))+ # structure
+  geom_bar(stat="identity", fill="white")+ # bar plot
+  ylim(c(0,100))+ # limits
+  theme(legend.position="none") # remove legend
 
+#plot bars of 2006
+p2<-ggplot(tabout, aes(x=class, y=perc2006, color=class))+ # structure
+  geom_bar(stat="identity", fill="white")+ # bar plot
+  ylim(c(0,100))+ # limits
+  theme(legend.position="none") # remove legend
 
-
+p1+p2
 
 
 
