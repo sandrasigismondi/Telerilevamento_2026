@@ -4,6 +4,7 @@ library(terra)
 library(imageRy)
 library(ggplot2)
 library(patchwork)
+library(devtools)
 
 #listing files
 im.list()
