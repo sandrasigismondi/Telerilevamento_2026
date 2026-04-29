@@ -72,7 +72,10 @@ loop3 <- function() {
 loop3()
 
 
-
+#setwd
+sink("data.txt")
+loop()
+sink() #chiudo la funzione, stessa cosa di dev.off()
 
 
 
