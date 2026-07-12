@@ -6,13 +6,19 @@ library(viridis)
 
 setwd("C:\\Users\\fabis\\Downloads\\Uni\\SGN Magistrale\\Telerilevamento Geo-Eco in R")
 list.files()
+
 march2019 <- rast("columbia_march2019.tif")
+
 columbia <- vect("columbia_riproiettato.shp")
 march2019_crop <- crop(march2019, columbia)
 march2019_mask <- mask(march2019_crop, columbia)
+
 plotRGB(march2019_mask, r=3, g=2, b=1, stretch="lin")
 
-
+ndsi_march2019 <- (march2019_mask[[2]] - march2019_mask[[5]]) / (march2019_mask[[2]] + march2019_mask[[5]])
+plot(ndsi_march2019)
+plot(ndsi_march2019, col = mako(200), main = "NDSI - Marzo 2019")
+hist(ndsi_march2019, breaks = 100, main = "Distribuzione NDSI", xlab = "NDSI")
 
 
 
