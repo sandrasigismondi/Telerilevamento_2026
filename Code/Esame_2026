@@ -52,6 +52,27 @@ hist(ndsi_march2021, breaks = 100, main = "Distribuzione NDSI", xlab = "NDSI")
 class_march2021 <- unsuperClass(march2021_mask, nClasses = 3)
 
 
+
+
+
+# September 2020
+september2020 <- rast("columbia_september2020.tif")
+
+columbia <- vect("columbia_riproiettato.shp")
+september2020_crop <- crop(september2020, columbia)
+september2020_mask <- mask(september2020_crop, columbia)
+
+plotRGB(september2020_mask, r = 3, g = 2, b = 1, stretch = "lin")
+
+ndsi_september2020 <- (september2020_mask[[2]] - september2020_mask[[5]]) / (september2020_mask[[2]] + september2020_mask[[5]])
+plot(ndsi_september2020)
+plot(ndsi_september2020, col = mako(200), main = "NDSI - Settembre 2020")
+hist(ndsi_september2020, breaks = 100, main = "Distribuzione NDSI", xlab = "NDSI")
+
+class_september2020 <- unsuperClass(september2020_mask, nClasses = 3)
+plot(class_september2020$map)
+
+
 # September 2021
 september2021 <- rast("columbia_september2021.tif")
 
@@ -67,7 +88,24 @@ plot(ndsi_september2021, col = mako(200), main = "NDSI - Settembre 2021")
 hist(ndsi_september2021, breaks = 100, main = "Distribuzione NDSI", xlab = "NDSI")
 
 class_september2021 <- unsuperClass(september2021_mask, nClasses = 3)
+plot(class_september2021$map)
 
+# September 2023
+september2023 <- rast("columbia_september2023.tif")
+
+columbia <- vect("columbia_riproiettato.shp")
+september2023_crop <- crop(september2023, columbia)
+september2023_mask <- mask(september2023_crop, columbia)
+
+plotRGB(september2023_mask, r = 3, g = 2, b = 1, stretch = "lin")
+
+ndsi_september2023 <- (september2023_mask[[2]] - september2023_mask[[5]]) / (september2023_mask[[2]] + september2023_mask[[5]])
+plot(ndsi_september2023)
+plot(ndsi_september2023, col = mako(200), main = "NDSI - Settembre 2023")
+hist(ndsi_september2023, breaks = 100, main = "Distribuzione NDSI", xlab = "NDSI")
+
+class_september2023 <- unsuperClass(september2023_mask, nClasses = 3)
+plot(class_september2023$map)
 
 
 ####################################
