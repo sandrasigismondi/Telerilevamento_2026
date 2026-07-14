@@ -35,7 +35,21 @@ Sono state utilizzate tre immagini satellitari Landsat acquisite nei mesi di set
 - Settembre 2021
 - Settembre 2023
 
-Le immagini sono state ritagliate sull'area del Columbia Glacier mediante uno shapefile del ghiacciaio (fonte).
+# 1. Preparazione delle immagini
+
+Le immagini satellitari vengono importate come oggetti `SpatRaster` e ritagliate utilizzando il perimetro del ghiacciaio. (fonte)
+
+```r
+sep2020 <- rast("columbia_september2020.tif")
+sep2020_mask <- prepareGlacier(sep2020, columbia)
+
+sep2021 <- rast("columbia_september2021.tif")
+sep2021_mask <- prepareGlacier(sep2021, columbia)
+
+sep2023 <- rast("columbia_september2023.tif")
+sep2023_mask <- prepareGlacier(sep2023, columbia)
+```
+
 
 ---
 
@@ -45,11 +59,13 @@ L'intera analisi è stata svolta in **R** con i seguenti pacchetti:
 
 ```r
 library(terra)      # gestione dei raster e operazioni spaziali
-library(imageRy)    # elaborazione e visualizzazione delle immagini
-library(ggplot2)    # grafici statistici
 library(viridis)    # palette cromatiche
 library(RStoolbox)  # classificazione non supervisionata e PCA
 ```
+
+utilizzando il pacchetto **glacieR**, disponibile al seguente link:
+
+➡️ **https://github.com/sandrasigismondi/glacieR**
 
 ---
 
@@ -78,23 +94,37 @@ library(RStoolbox)  # classificazione non supervisionata e PCA
 
 ### Immagini RGB
 
-*(Inserire qui il pannello RGB ottenuto)*
+Per ogni anno viene costruita una composizione a colori reali (RGB), utile per una prima valutazione visiva dello stato del ghiacciaio.
+
+```r
+plotGlacierRGB(sep2020_mask, r = 3, g = 2, b = 1)
+plotGlacierRGB(sep2021_mask, r = 3, g = 2, b = 1)
+plotGlacierRGB(sep2023_mask, r = 3, g = 2, b = 1)
+```
+
+<p align="center">
+<img width="727" height="602" alt="plotGlacierRGB" src="https://github.com/user-attachments/assets/05b2d780-fbc4-4684-a6be-8a61b4188240" />
 
 ---
 
 ## Calcolo del NDSI
 
+L'indice **NDSI (Normalized Difference Snow Index)** permette di evidenziare neve e ghiaccio pulito.
+
 ```r
-# codice...
+ndsi_sep2020 <- glacierNDSI(sep2020_mask, green = 2, swir = 5)
+ndsi_sep2021 <- glacierNDSI(sep2021_mask, green = 2, swir = 5)
+ndsi_sep2023 <- glacierNDSI(sep2023_mask, green = 2, swir = 5)
+
+plotNDSI(ndsi_sep2020)
+plotNDSI(ndsi_sep2021)
+plotNDSI(ndsi_sep2023)
 ```
 
-### Mappe NDSI
+Valori elevati di NDSI identificano principalmente neve e ghiaccio pulito, mentre valori bassi corrispondono a ghiaccio coperto da detrito, rocce o acqua.
 
-*(Inserire il pannello con le tre mappe NDSI)*
-
-### Distribuzione dei valori NDSI
-
-*(Inserire gli istogrammi)*
+<p align="center">
+<img width="727" height="602" alt="plotNDSI" src="https://github.com/user-attachments/assets/dceff5e2-fae9-4a71-839a-9a55802b0253" />
 
 ---
 
@@ -218,10 +248,9 @@ Tali metodologie costituiscono un valido supporto per il monitoraggio degli effe
 # 📚 Riferimenti
 
 - NASA Earth Observatory. *World of Change: Columbia Glacier*.
-- USGS Landsat Program.
-- Huggel, C., Kääb, A., et al. (Remote Sensing of Glaciers).
+-
 - R Documentation:
   - terra
   - RStoolbox
-  - ggplot2
   - viridis
+  - glacieR
