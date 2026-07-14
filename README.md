@@ -6,7 +6,6 @@ Il **Columbia Glacier** è uno dei ghiacciai di marea (*tidewater glacier*) più
 
 <p align="center"><img width="520" height="280" alt="columbiaglacier_pho_201606" src="https://github.com/user-attachments/assets/6023d73b-2f6b-4b60-a53f-0b7da76d1e5b" />
 
-
 A partire dai primi anni Ottanta il Columbia Glacier ha iniziato un rapido arretramento della fronte glaciale che continua ancora oggi. Dal 1980 il ramo principale ha perso oltre **20 km** di lunghezza e più della metà del proprio volume e spessore. Tale evoluzione è dovuta sia all'aumento delle temperature atmosferiche e oceaniche, sia a processi meccanici quali il distacco del ghiacciaio dalla morena terminale e l'intenso fenomeno di *calving*, ovvero il distacco di iceberg dalla fronte glaciale (NASA Earth Observatory).
 
 L'evoluzione del Columbia Glacier rappresenta quindi un importante indicatore degli effetti dei cambiamenti climatici e costituisce un laboratorio naturale per applicare tecniche di telerilevamento multispettrale.
@@ -72,27 +71,15 @@ utilizzando il pacchetto **glacieR**, disponibile al seguente link:
 ---
 
 ## Analisi
-
-1. importazione delle immagini Landsat;
-2. ritaglio mediante shapefile;
-3. visualizzazione RGB;
-4. calcolo dell'indice NDSI;
-5. classificazione non supervisionata in tre classi;
-6. riassegnazione delle classi sulla base dell'interpretazione visiva;
-7. calcolo delle percentuali di copertura;
-8. rappresentazione grafica delle variazioni temporali;
-9. analisi PCA;
-10. calcolo dell'eterogeneità spaziale tramite deviazione standard locale.
+- visualizzazione RGB;
+- calcolo dell'indice NDSI;
+- classificazione non supervisionata in tre classi;
+- calcolo delle percentuali di copertura;
+- rappresentazione grafica delle variazioni temporali
 
 ---
 
 # 📊 Risultati
-
-## Importazione dei dati
-
-```r
-# codice...
-```
 
 ### Immagini RGB
 
@@ -126,6 +113,9 @@ Valori elevati di NDSI identificano principalmente neve e ghiaccio pulito, mentr
 
 <p align="center"><img width="727" height="217" alt="plotNDSI" src="https://github.com/user-attachments/assets/029969e3-886d-4e9e-b0e3-53be1b25d9dd" />
 
+---
+
+
 
 ---
 
@@ -149,9 +139,7 @@ Le immagini sono state classificate in **tre classi**, successivamente interpret
 
 ## Analisi quantitativa delle classi
 
-```r
-# codice...
-```
+
 
 ### Percentuali di copertura
 
@@ -164,50 +152,6 @@ Le immagini sono state classificate in **tre classi**, successivamente interpret
 *(Inserire il grafico a barre realizzato con ggplot2)*
 
 L'anno 2021 presenta la maggiore percentuale di neve e ghiaccio pulito, mentre le superfici scure e il ghiaccio con detrito risultano relativamente meno estesi rispetto agli altri anni.
-
----
-
-## Analisi delle Componenti Principali (PCA)
-
-```r
-# codice...
-```
-
-### Prima componente principale
-
-*(Inserire il pannello PC1)*
-
-La PCA mostra che oltre il **98% della variabilità** è spiegata dalla prima componente principale in tutti gli anni analizzati.
-
-| Anno | Varianza spiegata da PC1 |
-|------|--------------------------:|
-|2020|98.45%|
-|2021|98.19%|
-|2023|98.05%|
-
-Ciò indica una forte correlazione tra le bande multispettrali e conferma che la prima componente sintetizza quasi completamente l'informazione radiometrica.
-
----
-
-## Analisi dell'eterogeneità spaziale
-
-```r
-# codice...
-```
-
-### Deviazione standard locale della PC1
-
-*(Inserire il pannello delle mappe di eterogeneità)*
-
-Valori medi di eterogeneità:
-
-|Anno|Media SD locale|
-|----|--------------:|
-|2020|0.0115|
-|2021|0.0134|
-|2023|0.0130|
-
-L'anno 2021 mostra il valore medio più elevato, suggerendo una maggiore variabilità spaziale delle caratteristiche superficiali.
 
 ---
 
