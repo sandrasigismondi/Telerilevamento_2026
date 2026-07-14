@@ -81,7 +81,7 @@ utilizzando il pacchetto **glacieR**, disponibile al seguente link:
 
 # 📊 Risultati
 
-### Immagini RGB
+## Immagini RGB
 
 Per ogni anno viene costruita una composizione a colori reali (RGB), utile per una prima valutazione visiva dello stato del ghiacciaio.
 
@@ -115,43 +115,58 @@ Valori elevati di NDSI identificano principalmente neve e ghiaccio pulito, mentr
 
 ---
 
+## Calcolo dell'NDWI
 
+L'indice **NDWI (Normalized Difference Water Index)** viene utilizzato per individuare la presenza di acqua superficiale e acqua di fusione.
+
+```r
+ndwi_sep2020 <- glacierNDWI(sep2020_mask, green = 3, nir = 5)
+ndwi_sep2021 <- glacierNDWI(sep2021_mask, green = 3, nir = 5)
+ndwi_sep2023 <- glacierNDWI(sep2023_mask, green = 3, nir = 5)
+
+plotNDWI(ndwi_sep2020)
+plotNDWI(ndwi_sep2021)
+plotNDWI(ndwi_sep2023)
+```
+
+Valori elevati indicano la presenza di acqua liquida, mentre valori inferiori sono associati a neve, ghiaccio e superfici rocciose.
+
+<p align="center">
 
 ---
 
+
 ## Classificazione non supervisionata
 
+Per ogni immagine è stata eseguita una classificazione non supervisionata mediante algoritmo **k-means**, suddividendo la superficie glaciale in tre classi spettrali.
+
 ```r
-# codice...
+class_sep2020 <- glacierClass(sep2020_mask, nClasses = 3)
+class_sep2021 <- glacierClass(sep2021_mask, nClasses = 3)
+class_sep2023 <- glacierClass(sep2023_mask, nClasses = 3)
+
+plotClass(class_sep2020)
+plotClass(class_sep2021)
+plotClass(class_sep2023)
 ```
 
-Le immagini sono state classificate in **tre classi**, successivamente interpretate come:
+Le classi sono state successivamente associate alle seguenti categorie:
 
-| Classe | Interpretazione |
-|---------|-----------------|
-| 1 | Superfici scure |
-| 2 | Ghiaccio con detrito |
-| 3 | Neve/Ghiaccio pulito |
+- Superfici scure
+- Ghiaccio coperto da detrito
+- Neve / ghiaccio pulito
 
-*(Inserire il pannello delle classificazioni finali)*
+<p align="center">
 
 ---
 
 ## Analisi quantitativa delle classi
 
 
+---
 
 ### Percentuali di copertura
 
-| Classe | 2020 | 2021 | 2023 |
-|---------|-----:|-----:|-----:|
-| Superfici scure | 28.33 | 24.60 | 26.97 |
-| Ghiaccio con detrito | 26.99 | 23.76 | 26.64 |
-| Neve/Ghiaccio pulito | 44.68 | 51.65 | 46.39 |
-
-*(Inserire il grafico a barre realizzato con ggplot2)*
-
-L'anno 2021 presenta la maggiore percentuale di neve e ghiaccio pulito, mentre le superfici scure e il ghiaccio con detrito risultano relativamente meno estesi rispetto agli altri anni.
 
 ---
 
