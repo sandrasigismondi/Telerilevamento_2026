@@ -67,6 +67,8 @@ utilizzando il pacchetto **glacieR**, disponibile al seguente link:
 
 ➡️ **https://github.com/sandrasigismondi/glacieR**
 
+<img width="54" height="54" alt="glacieR_logo" src="https://github.com/user-attachments/assets/f9e15aed-e81c-4156-9ea3-90b75071ed5c" />
+
 ---
 
 ## Analisi
