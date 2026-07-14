@@ -108,7 +108,14 @@ class_september2023 <- unsuperClass(september2023_mask, nClasses = 3)
 plot(class_september2023$map)
 
 
-####################################
+
+
+
+
+
+
+
+#######################################################################################################################################
 // ==============================================
 // Sentinel-2 Surface Reflectance - Cloud Masking and Visualization
 // https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED
