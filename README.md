@@ -104,8 +104,7 @@ plotGlacierRGB(sep2021_mask, r = 3, g = 2, b = 1)
 plotGlacierRGB(sep2023_mask, r = 3, g = 2, b = 1)
 ```
 
-<p align="center">
-<img width="727" height="602" alt="plotGlacierRGB" src="https://github.com/user-attachments/assets/05b2d780-fbc4-4684-a6be-8a61b4188240" />
+<p align="center"><img width="727" height="294" alt="plotGlacierRGB" src="https://github.com/user-attachments/assets/709993e4-223e-4f50-a365-8abca989ef3e" />
 
 ---
 
@@ -125,8 +124,8 @@ plotNDSI(ndsi_sep2023)
 
 Valori elevati di NDSI identificano principalmente neve e ghiaccio pulito, mentre valori bassi corrispondono a ghiaccio coperto da detrito, rocce o acqua.
 
-<p align="center">
-<img width="727" height="602" alt="plotNDSI" src="https://github.com/user-attachments/assets/dceff5e2-fae9-4a71-839a-9a55802b0253" />
+<p align="center"><img width="727" height="217" alt="plotNDSI" src="https://github.com/user-attachments/assets/029969e3-886d-4e9e-b0e3-53be1b25d9dd" />
+
 
 ---
 
