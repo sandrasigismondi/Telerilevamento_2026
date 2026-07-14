@@ -1,23 +1,227 @@
-# Columbia Glacier 🛰️
-Code developed during Rocchini's course
+# Analisi multitemporale delle variazioni superficiali del Columbia Glacier (Alaska) mediante dati Landsat e Remote Sensing in R
 
-![sentinel-2](https://github.com/user-attachments/assets/48b64a69-67c8-41fa-bd60-d8bd895db87a)
+## ⛰️ Introduzione
 
+Il **Columbia Glacier** è uno dei ghiacciai di marea (*tidewater glacier*) più studiati al mondo e rappresenta uno dei casi più emblematici di rapido ritiro glaciale osservato negli ultimi decenni. Situato nei Monti Chugach, nell'Alaska meridionale, il ghiacciaio si estende da un campo glaciale posto a circa **3050 m s.l.m.** fino al Prince William Sound.
 
-<img width="2297" height="2168" alt="Earth_from_Space_Columbia_Glacier_Alaska (1)" src="https://github.com/user-attachments/assets/c16322d6-f65b-4eda-ba5f-85a01005247c" />
-
-
+<p align="center"><img width="520" height="280" alt="columbiaglacier_pho_201606" src="https://github.com/user-attachments/assets/6023d73b-2f6b-4b60-a53f-0b7da76d1e5b" />
 
 
+A partire dai primi anni Ottanta il Columbia Glacier ha iniziato un rapido arretramento della fronte glaciale che continua ancora oggi. Dal 1980 il ramo principale ha perso oltre **20 km** di lunghezza e più della metà del proprio volume e spessore. Tale evoluzione è dovuta sia all'aumento delle temperature atmosferiche e oceaniche, sia a processi meccanici quali il distacco del ghiacciaio dalla morena terminale e l'intenso fenomeno di *calving*, ovvero il distacco di iceberg dalla fronte glaciale (NASA Earth Observatory).
 
+L'evoluzione del Columbia Glacier rappresenta quindi un importante indicatore degli effetti dei cambiamenti climatici e costituisce un laboratorio naturale per applicare tecniche di telerilevamento multispettrale.
 
+<p align="center"><img width="697" height="568" alt="Columbia Glacier" src="https://github.com/user-attachments/assets/8d042c35-0369-4356-83c1-5371437bc134">
 
+###  📌 Obiettivo dello studio
 
+Analizzare l'evoluzione superficiale del Columbia Glacier tra **settembre 2020**, **settembre 2021** e **settembre 2023** tramite:
+- visualizzazione RGB delle immagini;
+- calcolo del **Normalized Difference Snow Index (NDSI)**;
+- classificazione non supervisionata delle principali coperture superficiali;
+- confronto quantitativo delle percentuali di copertura delle classi;
+- analisi delle componenti principali (PCA);
+- stima dell'eterogeneità spaziale mediante deviazione standard locale della prima componente principale.
 
+---
 
-## Cosa è? 📘
-Questo repo contiene il codice del corso di Telerilevamento Geo-Ecologico presso UNIBO:
-[Vedi corso](https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/535513)
+# 🛰️ Materiali e metodi
 
-## Il docente 🧑‍🏫
-Duccio Rocchini, informazioni [qui](https://www.unibo.it/sitoweb/duccio.rocchini)
+## Dataset
+
+Sono state utilizzate tre immagini satellitari Landsat acquisite nei mesi di settembre degli anni:
+
+- Settembre 2020
+- Settembre 2021
+- Settembre 2023
+
+Le immagini sono state ritagliate sull'area del Columbia Glacier mediante uno shapefile del ghiacciaio (fonte).
+
+---
+
+## Software
+
+L'intera analisi è stata svolta in **R** con i seguenti pacchetti:
+
+```r
+library(terra)      # gestione dei raster e operazioni spaziali
+library(imageRy)    # elaborazione e visualizzazione delle immagini
+library(ggplot2)    # grafici statistici
+library(viridis)    # palette cromatiche
+library(RStoolbox)  # classificazione non supervisionata e PCA
+```
+
+---
+
+## Analisi
+
+1. importazione delle immagini Landsat;
+2. ritaglio mediante shapefile;
+3. visualizzazione RGB;
+4. calcolo dell'indice NDSI;
+5. classificazione non supervisionata in tre classi;
+6. riassegnazione delle classi sulla base dell'interpretazione visiva;
+7. calcolo delle percentuali di copertura;
+8. rappresentazione grafica delle variazioni temporali;
+9. analisi PCA;
+10. calcolo dell'eterogeneità spaziale tramite deviazione standard locale.
+
+---
+
+# 📊 Risultati
+
+## Importazione dei dati
+
+```r
+# codice...
+```
+
+### Immagini RGB
+
+*(Inserire qui il pannello RGB ottenuto)*
+
+---
+
+## Calcolo del NDSI
+
+```r
+# codice...
+```
+
+### Mappe NDSI
+
+*(Inserire il pannello con le tre mappe NDSI)*
+
+### Distribuzione dei valori NDSI
+
+*(Inserire gli istogrammi)*
+
+---
+
+## Classificazione non supervisionata
+
+```r
+# codice...
+```
+
+Le immagini sono state classificate in **tre classi**, successivamente interpretate come:
+
+| Classe | Interpretazione |
+|---------|-----------------|
+| 1 | Superfici scure |
+| 2 | Ghiaccio con detrito |
+| 3 | Neve/Ghiaccio pulito |
+
+*(Inserire il pannello delle classificazioni finali)*
+
+---
+
+## Analisi quantitativa delle classi
+
+```r
+# codice...
+```
+
+### Percentuali di copertura
+
+| Classe | 2020 | 2021 | 2023 |
+|---------|-----:|-----:|-----:|
+| Superfici scure | 28.33 | 24.60 | 26.97 |
+| Ghiaccio con detrito | 26.99 | 23.76 | 26.64 |
+| Neve/Ghiaccio pulito | 44.68 | 51.65 | 46.39 |
+
+*(Inserire il grafico a barre realizzato con ggplot2)*
+
+L'anno 2021 presenta la maggiore percentuale di neve e ghiaccio pulito, mentre le superfici scure e il ghiaccio con detrito risultano relativamente meno estesi rispetto agli altri anni.
+
+---
+
+## Analisi delle Componenti Principali (PCA)
+
+```r
+# codice...
+```
+
+### Prima componente principale
+
+*(Inserire il pannello PC1)*
+
+La PCA mostra che oltre il **98% della variabilità** è spiegata dalla prima componente principale in tutti gli anni analizzati.
+
+| Anno | Varianza spiegata da PC1 |
+|------|--------------------------:|
+|2020|98.45%|
+|2021|98.19%|
+|2023|98.05%|
+
+Ciò indica una forte correlazione tra le bande multispettrali e conferma che la prima componente sintetizza quasi completamente l'informazione radiometrica.
+
+---
+
+## Analisi dell'eterogeneità spaziale
+
+```r
+# codice...
+```
+
+### Deviazione standard locale della PC1
+
+*(Inserire il pannello delle mappe di eterogeneità)*
+
+Valori medi di eterogeneità:
+
+|Anno|Media SD locale|
+|----|--------------:|
+|2020|0.0115|
+|2021|0.0134|
+|2023|0.0130|
+
+L'anno 2021 mostra il valore medio più elevato, suggerendo una maggiore variabilità spaziale delle caratteristiche superficiali.
+
+---
+
+# 💬 Discussione
+
+L'analisi multitemporale evidenzia come il Columbia Glacier presenti variazioni nella distribuzione delle principali coperture superficiali tra il 2020 e il 2023.
+
+L'NDSI conferma la predominanza di valori elevati associati alla neve e al ghiaccio, mentre le classificazioni non supervisionate permettono di distinguere efficacemente tre macro-tipologie superficiali: superfici scure, ghiaccio ricoperto da detrito e neve/ghiaccio pulito.
+
+L'analisi PCA mostra che la quasi totalità della variabilità radiometrica è concentrata nella prima componente principale (>98%), indicando una forte ridondanza informativa tra le bande Landsat.
+
+L'analisi dell'eterogeneità evidenzia una lieve maggiore variabilità nel 2021 rispetto agli altri anni, probabilmente riconducibile a differenti condizioni superficiali, distribuzione del detrito o condizioni di illuminazione al momento dell'acquisizione.
+
+I risultati sono coerenti con quanto riportato dalla letteratura scientifica, che descrive il Columbia Glacier come un ghiacciaio in rapido ritiro caratterizzato da continue modificazioni morfologiche e da un'intensa dinamica di fusione e calving.
+
+## Limiti dello studio
+
+L'analisi presenta alcuni limiti:
+
+- utilizzo di sole tre date di acquisizione;
+- classificazione non supervisionata soggetta a interpretazione;
+- assenza di dati di validazione a terra;
+- possibile influenza delle condizioni atmosferiche e dell'illuminazione;
+- utilizzo esclusivo di dati ottici Landsat.
+
+Un'analisi più completa potrebbe integrare immagini Sentinel-2, dati SAR e modelli digitali di elevazione per valutare anche le variazioni volumetriche.
+
+---
+
+# 📎 Conclusione
+Questo lavoro dimostra come il telerilevamento multispettrale rappresenti uno strumento efficace per monitorare l'evoluzione dei ghiacciai.
+
+L'integrazione tra immagini RGB, indice NDSI, classificazione non supervisionata, PCA e analisi dell'eterogeneità consente di descrivere quantitativamente le variazioni superficiali del Columbia Glacier e di individuare differenze spaziali e temporali tra gli anni analizzati.
+
+Tali metodologie costituiscono un valido supporto per il monitoraggio degli effetti dei cambiamenti climatici sui ghiacciai e possono essere facilmente replicate su altri sistemi glaciali mediante dati satellitari liberamente disponibili.
+
+---
+
+# 📚 Riferimenti
+
+- NASA Earth Observatory. *World of Change: Columbia Glacier*.
+- USGS Landsat Program.
+- Huggel, C., Kääb, A., et al. (Remote Sensing of Glaciers).
+- R Documentation:
+  - terra
+  - RStoolbox
+  - ggplot2
+  - viridis
