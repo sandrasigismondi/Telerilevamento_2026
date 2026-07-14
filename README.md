@@ -209,7 +209,7 @@ Tali metodologie costituiscono un valido supporto per il monitoraggio degli effe
 # 📚 Riferimenti
 
 - NASA Earth Observatory. *World of Change: Columbia Glacier*.
--
+- Columbia glacier shapefile: https://sealevel.nasa.gov/vesl/web/glaciers/columbia/
 - R Documentation:
   - terra
   - RStoolbox
