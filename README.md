@@ -1,3 +1,6 @@
+> ### Telerilevamento geo-ecologico in R
+>> Sandra Sigismondi
+
 # Analisi multitemporale delle variazioni superficiali del Columbia Glacier (Alaska) mediante dati Landsat e Remote Sensing in R
 
 ## ⛰️ Introduzione
