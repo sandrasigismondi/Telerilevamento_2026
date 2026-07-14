@@ -131,7 +131,8 @@ plotNDWI(ndwi_sep2023)
 
 Valori elevati indicano la presenza di acqua liquida, mentre valori inferiori sono associati a neve, ghiaccio e superfici rocciose.
 
-<p align="center">
+<p align="center"><img width="727" height="213" alt="plotNDWI" src="https://github.com/user-attachments/assets/b18d0538-65e3-4663-8065-9371a99d986b" />
+
 
 ---
 
