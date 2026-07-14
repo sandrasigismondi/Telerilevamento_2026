@@ -10,7 +10,7 @@ A partire dai primi anni Ottanta il Columbia Glacier ha iniziato un rapido arret
 
 L'evoluzione del Columbia Glacier rappresenta quindi un importante indicatore degli effetti dei cambiamenti climatici e costituisce un laboratorio naturale per applicare tecniche di telerilevamento multispettrale.
 
-<p align="center"><img width="697" height="568" alt="Columbia Glacier" src="https://github.com/user-attachments/assets/8d042c35-0369-4356-83c1-5371437bc134">
+<p align="center"><img width="547" height="418" alt="Columbia Glacier" src="https://github.com/user-attachments/assets/8d042c35-0369-4356-83c1-5371437bc134">
 
 ###  📌 Obiettivo dello studio
 
