@@ -213,13 +213,46 @@ Le tre mappe mostrano una distribuzione spaziale complessivamente coerente delle
 
 # Analisi quantitativa delle classi
 
-argomento
+Per confrontare quantitativamente le classificazioni ottenute, è stata calcolata la percentuale di copertura di ciascuna classe per ogni anno analizzato.
 
----
+```r
+# freq() calcola la frequenza assoluta dei pixel appartenenti a ciascuna classe
 
-# Percentuali di copertura
+f2020 <- freq(class2020)
+f2021 <- freq(class2021)
+f2023 <- freq(class2023)
 
-argomento
+# Calcolo della percentuale di copertura di ogni classe rispetto al totale dei pixel classificati
+
+perc2020 <- (f2020$count / sum(f2020$count)) * 100
+perc2021 <- (f2021$count / sum(f2021$count)) * 100
+perc2023 <- (f2023$count / sum(f2023$count)) * 100
+
+# round() arrotonda le percentuali a due cifre decimali
+
+round(perc2020, 2)
+round(perc2021, 2)
+round(perc2023, 2)
+
+# data.frame() crea una tabella riassuntiva con le percentuali di copertura per ciascun anno
+
+tabella <- data.frame(
+  Classe = nomi,
+  Settembre2020 = round(perc2020, 2),
+  Settembre2021 = round(perc2021, 2),
+  Settembre2023 = round(perc2023, 2)
+)
+
+tabella
+```
+
+| Classe | Settembre 2020 (%) | Settembre 2021 (%) | Settembre 2023 (%) |
+|:----------------------------------|-------------------:|-------------------:|-------------------:|
+| Superfici a bassa riflettanza | 28.33 | 24.60 | 26.97 |
+| Ghiaccio con detriti | 26.99 | 23.76 | 26.64 |
+| Ghiaccio pulito e neve | 44.68 | 51.65 | 46.39 |
+
+>La classe Ghiaccio pulito e neve è quella predominante in tutti gli anni. Le Superfici a bassa riflettanza e il Ghiaccio con detriti presentano percentuali inferiori e variazioni, con una lieve diminuzione nel 2021 e un successivo incremento nel 2023.
 
 ---
 
