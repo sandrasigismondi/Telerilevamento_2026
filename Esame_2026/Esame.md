@@ -1,7 +1,7 @@
 > ### Telerilevamento geo-ecologico in R
 >> Sandra Sigismondi
 
-# Analisi multitemporale delle variazioni superficiali del Columbia Glacier mediante dati Landsat e Remote Sensing in R
+# Analisi multitemporale del Columbia Glacier mediante telerilevamento in R / Evoluzione superficiale del Columbia Glacier (2020–2023) mediante immagini Sentinel-2
 
 ## ⛰️ Introduzione
 
@@ -43,9 +43,16 @@ library(glacieR)    #
  
  <img width="54" height="54" alt="glacieR_logo" src="https://github.com/user-attachments/assets/f9e15aed-e81c-4156-9ea3-90b75071ed5c" />
 
-Immagini satellitari scaricate da [Google Earth Engine](https://earthengine.google.com/).
+Immagini Sentinel-2 Surface Reflectance Harmonized scaricate da [Google Earth Engine](https://earthengine.google.com/) con risoluzione spaziale di 20 m. Sono state esportate le bande presenti in tabella.
 
-landsat, a 20m con bande 2, 3, 4, 8, 11 e 12.
+| Banda | Colore | R |
+| :---: | :---: | :--- |
+| **B2** | Blu | [[1]] |
+| **B3** | Verde | [[2]] |
+| **B4** | Rosso | [[3]] |
+| **B8** | Vicino Infrarosso (NIR) | [[4]] |
+| **B11** | SWIR 1 | [[5]] |
+| **B12** | SWIR 2 | [[6]] |
 
 ```r
 # Ritaglio da shapefile
@@ -69,6 +76,8 @@ sep2023_mask <- prepareGlacier(sep2023, columbia)
 # Visualizzazione RGB
 
 ```r
+par(mfrow = c(1,3))   # 
+
 # bande
 
 plotGlacierRGB(sep2020_mask, r = 3, g = 2, b = 1, title = "Settembre 2020")
@@ -82,16 +91,19 @@ plotGlacierRGB(sep2023_mask, r = 3, g = 2, b = 1, title = "Settembre 2023")
 
 # Calcolo del NDSI
 
-come si fa
+valori prossimi a 1 indicano neve o ghiaccio pulito; valori prossimi a 0 o negativi identificano rocce, detrito o acqua.
 
 $$
 NDSI=\frac{Green-SWIR}{Green+SWIR}
 $$
 
+neve e ghiaccio pulito → valori elevati
+rocce/acqua → valori bassi
+
 ```r
 # bande
 
-ndsi_sep2020 <- glacierNDSI(sep2020_mask, green = 2, swir = 5)  # bande
+ndsi_sep2020 <- glacierNDSI(sep2020_mask, green = 2, swir = 5)
 ndsi_sep2021 <- glacierNDSI(sep2021_mask, green = 2, swir = 5)
 ndsi_sep2023 <- glacierNDSI(sep2023_mask, green = 2, swir = 5)
 
@@ -106,7 +118,7 @@ plotNDSI(ndsi_sep2023)
 
 # Calcolo dell'NDWI
 
-come si fa
+L'NDWI evidenzia la presenza di acqua superficiale e aree interessate da fusione della neve e del ghiaccio. Valori positivi indicano superfici con maggiore contenuto di acqua, mentre valori negativi sono tipici di ghiaccio asciutto, rocce e detrito.
 
 $$
 NDWI=\frac{Green-NIR}{Green+NIR}
@@ -129,6 +141,8 @@ plotNDWI(ndwi_sep2023)
 ---
 
 # Classificazione non supervisionata
+
+È stata applicata una classificazione non supervisionata mediante algoritmo k-means, specificando tre classi. L'algoritmo raggruppa automaticamente i pixel in base alla loro similarità spettrale, senza utilizzare campioni di addestramento. Successivamente le classi sono state interpretate come superfici scure, ghiaccio coperto da detrito e neve/ghiaccio pulito.
 
 ```r
 # 3 classi
