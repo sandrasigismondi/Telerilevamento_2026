@@ -155,7 +155,7 @@ plotNDWI(ndwi_sep2023, title = "NDWI - Settembre 2023")
 
 # Classificazione non supervisionata
 
-È stata applicata una classificazione non supervisionata mediante algoritmo k-means, specificando tre classi. L'algoritmo raggruppa automaticamente i pixel in base alla loro similarità spettrale, senza utilizzare campioni di addestramento. L'utilizzo di tutte le bande multispettrali di Sentinel-2 permette di sfruttare un numero maggiore di informazioni rispetto alla sola immagine RGB o a un singolo indice spettrale.
+È stata applicata una classificazione non supervisionata mediante algoritmo k-means, specificando tre classi. L'algoritmo raggruppa automaticamente i pixel in base alla loro similarità spettrale, senza utilizzare campioni di addestramento. Per la classificazione sono state utilizzate tutte le bande multispettrali esportate, in modo da considerare l'intera informazione spettrale disponibile e non solo quella fornita dalla composizione RGB o dai singoli indici.
 
 ```r
 # glacierClass() esegue una classificazione non supervisionata
