@@ -164,8 +164,6 @@ L'analisi presenta alcuni limiti:
 - possibile influenza delle condizioni atmosferiche e dell'illuminazione;
 - utilizzo esclusivo di dati ottici Landsat.
 
-Un'analisi più completa potrebbe integrare immagini Sentinel-2, dati SAR e modelli digitali di elevazione per valutare anche le variazioni volumetriche.
-
 ---
 
 # 📎 Conclusione
