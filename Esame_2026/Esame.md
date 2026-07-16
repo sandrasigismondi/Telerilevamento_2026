@@ -46,7 +46,7 @@ library(glacieR)    # Strumenti per l'analisi dei ghiacciai tramite telerilevame
 > <img width="34" height="34" alt="glacieR_logo" src="https://github.com/user-attachments/assets/f191e9ef-6fba-4b5b-abd1-b7376044796e" /> Repository del pacchetto **glacieR** ➡️ **https://github.com/sandrasigismondi/glacieR**
 
 ## Dati satellitari
-Sono state utilizzate immagini Sentinel-2 Surface Reflectance Harmonized scaricate da [Google Earth Engine](https://earthengine.google.com/) con risoluzione spaziale di 20 m. Sono state esportate le bande presenti in tabella.
+Le immagini Sentinel-2 Surface Reflectance Harmonized sono state scaricate da [Google Earth Engine](https://earthengine.google.com/) con risoluzione spaziale di 20 m, scelta come compromesso tra dettaglio spaziale e disponibilità delle bande SWIR. Sono state selezionate acquisizioni dello stesso periodo dell'anno (settembre), riducendo l'influenza della variabilità stagionale della copertura nevosa. Le annualità considerate sono state individuate in funzione della disponibilità di immagini complete dell'area di studio e prive di copertura nuvolosa. Le bande esportate sono riportate nella tabella seguente.
 
 | **Banda** | **Descrizione** | **Utilizzo** |
 |:---:|:---|:---|
@@ -164,7 +164,7 @@ plot(ndsi_diff_23_20, col = inferno(200), main="ΔNDSI 2023 - 2020")
 
 <p align="center"><img width="1052" height="320" alt="plot_diffNDSI" src="https://github.com/user-attachments/assets/5bae9468-721e-40fc-82f0-1dd3b0f42519" />
 
-Le differenze di NDSI risultano generalmente contenute, indicando una sostanziale stabilità della distribuzione della neve e del ghiaccio durante il periodo analizzato. Le variazioni più evidenti sono localizzate nelle aree periferiche del ghiacciaio e nelle zone di transizione tra ghiaccio pulito, ghiaccio con detriti e affioramenti rocciosi
+>Le differenze di NDSI risultano generalmente contenute, indicando una sostanziale stabilità della distribuzione della neve e del ghiaccio durante il periodo analizzato. Le variazioni più evidenti sono localizzate nelle aree periferiche del ghiacciaio e nelle zone di transizione tra ghiaccio pulito, ghiaccio con detriti e affioramenti rocciosi
 Il confronto 2020–2023 evidenzia modifiche più marcate rispetto ai confronti annuali, suggerendo un'evoluzione graduale della superficie glaciale nel corso dell'intero periodo di studio.
 
 ---
@@ -193,7 +193,7 @@ plotNDWI(ndwi_sep2023, title = "NDWI - Settembre 2023")
 
 <p align="center"><img width="1052" height="337" alt="plotNDWI2" src="https://github.com/user-attachments/assets/6579bd91-c3cf-49b3-96aa-b9c24011e437" />
 
->Le tre mappe mostrano una distribuzione spaziale dell'NDWI piuttosto simile. Le differenze osservabili sono localizzate in prossimità del fronte glaciale e delle aree di drenaggio.
+>Le tre mappe mostrano una distribuzione spaziale dell'NDWI complessivamente simile. Le differenze osservabili sono limitate e interessano soltanto alcune aree del ghiacciaio, suggerendo variazioni locali nella presenza di acqua superficiale o umidità della superficie.
 
 ---
 
@@ -219,7 +219,7 @@ plotClass(class_sep2023)
 
 >La classificazione individua tre gruppi spettralmente distinti. Poiché l'algoritmo assegna i numeri delle classi in modo arbitrario e indipendente per ciascun anno, le etichette numeriche non risultano direttamente confrontabili tra le diverse immagini.
 
-## Riclassificazione
+## Assegnazione delle classi
 
 Per rendere confrontabili i risultati ottenuti nei tre anni, le etichette numeriche sono state uniformate mantenendo la stessa corrispondenza tra numero di classe e tipologia di superficie.
 
@@ -253,7 +253,7 @@ legend("bottomleft",  # Posizione della legenda
 
 <p align="center"><img width="1052" height="421" alt="plotClass_legenda2" src="https://github.com/user-attachments/assets/7bda08c1-3201-4044-96b7-309e3aa851a6" />
 
->Le tre mappe mostrano una distribuzione spaziale complessivamente coerente delle principali coperture superficiali del ghiacciaio. La classe attribuita al ghiaccio pulito/neve interessa prevalentemente le porzioni più elevate del ghiacciaio, mentre le superfici rocciose risultano concentrate nelle aree periferiche prive di copertura glaciale. La classe identificata come ghiaccio sporco, detriti o superfici umide si distribuisce principalmente lungo la lingua glaciale e nelle zone prossime al fronte.
+>Le tre mappe evidenziano una distribuzione spaziale coerente delle principali coperture superficiali del Columbia Glacier. Il "Ghiaccio pulito e neve" occupa prevalentemente le quote più elevate, il "Ghiaccio con detriti" è distribuito nelle aree di transizione della superficie glaciale, mentre le "Superfici a bassa riflettanza" si concentrano soprattutto lungo la lingua glaciale e in prossimità del fronte.
 
 ---
 
@@ -366,23 +366,14 @@ p2020 + p2021 + p2023
 
 ---
 
-# 📊 Discussione e Conclusione
-
-argomento
-
-## Limiti dello studio
-
-- utilizzo di sole tre date di acquisizione;
-- classificazione non supervisionata soggetta a interpretazione;
-- assenza di dati di validazione a terra;
-- possibile influenza delle condizioni atmosferiche e dell'illuminazione;
-- utilizzo esclusivo di dati ottici Landsat.
-
----
-
 # 🎯 Conclusione
 
-argomento
+Le immagini RGB suggeriscono un progressivo arretramento della lingua glaciale, mentre gli indici NDSI e NDWI mostrano una distribuzione spaziale generalmente stabile, con variazioni concentrate nelle aree marginali del ghiacciaio e nelle zone di transizione tra ghiaccio, superfici detritiche e aree a bassa riflettanza. Anche l'analisi delle differenze di NDSI conferma che le modifiche risultano localizzate e più evidenti nel confronto tra il 2020 e il 2023.
+La classificazione non supervisionata ha consentito di distinguere tre principali classi di copertura superficiale: superfici a bassa riflettanza, ghiaccio con detriti e ghiaccio pulito e neve. L'analisi quantitativa evidenzia come la classe "ghiaccio pulito e neve" sia predominante durante tutto il periodo di studio, mentre le altre due classi mostrano variazioni percentuali contenute.
+
+Nel complesso, i risultati suggeriscono che tra il 2020 e il 2023 le **modifiche superficiali** del Columbia Glacier siano state modeste e localizzate, senza evidenziare variazioni spaziali estese della copertura glaciale nel mese di settembre.
+
+Tra i principali **limiti dello studio** rientrano l'utilizzo di sole tre acquisizioni satellitari, la classificazione non supervisionata priva di dati di validazione e la risoluzione spaziale di 20 m delle immagini Sentinel-2, che può non rappresentare dettagli superficiali di piccole dimensioni. Analisi future potrebbero integrare serie temporali più lunghe, dati ad alta risoluzione e procedure di validazione delle classificazioni per descrivere con maggiore accuratezza l'evoluzione del ghiacciaio.
 
 ---
 
