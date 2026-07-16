@@ -43,6 +43,14 @@ plotGlacierRGB(sep2021_mask, r = 3, g = 2, b = 1, title = "Settembre 2021")
 plotGlacierRGB(sep2023_mask, r = 3, g = 2, b = 1, title = "Settembre 2023")
 
 
+# Visualizza l'immagine in composizione a falsi colori:
+# r = NIR, g = rosso, b = verde
+
+plotGlacierRGB(sep2020_mask, 4, 3, 2, title = "Settembre 2020")
+plotGlacierRGB(sep2021_mask, 4, 3, 2, title = "Settembre 2021")
+plotGlacierRGB(sep2023_mask, 4, 3, 2, title = "Settembre 2023")
+
+
 # NDSI
 # glacierNDSI() calcola l'NDSI con la banda verde e la banda SWIR
 
