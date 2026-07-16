@@ -172,8 +172,9 @@ argomento
 
 # 📚 Riferimenti
 
-- Columbia glacier shapefile: https://sealevel.nasa.gov/vesl/web/glaciers/columbia/
-- Documentazione Sentinel-2 ESA - [Google Earth Engine](https://earthengine.google.com/)
--  NASA Earth Observatory. *World of Change: Columbia Glacier*. https://science.nasa.gov/earth/earth-observatory/world-of-change/columbia-glacier/
--  https://www.esa.int/Space_in_Member_States/Italy/Immagine_EO_della_Settimana_Ghiacciaio_Columbia_Alaska
--  https://science.nasa.gov/earth/earth-observatory/alaskas-iconic-columbia-glacier-still-retreats-153291/
+-  European Space Agency (ESA): https://www.esa.int/Space_in_Member_States/Italy/Immagine_EO_della_Settimana_Ghiacciaio_Columbia_Alaska
+-  Google Earth Engine Data Catalog: https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED
+-  Hood, E., & Berner, L. (2009). Effects of changing glacial coverage on the physical and biogeochemical properties of coastal streams in southeastern Alaska. Journal of Geophysical Research: Biogeosciences, 114(G3). https://doi.org/10.1029/2009JG000971
+-  NASA Earth Observatory: https://science.nasa.gov/earth/earth-observatory/alaskas-iconic-columbia-glacier-still-retreats-153291/
+-  NASA Earth Observatory. *World of Change: Columbia Glacier*: https://science.nasa.gov/earth/earth-observatory/world-of-change/columbia-glacier/
+-  NASA Sea Level Change Portal: https://sealevel.nasa.gov/vesl/web/glaciers/columbia/
