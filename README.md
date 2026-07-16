@@ -15,33 +15,40 @@ L'evoluzione del Columbia Glacier rappresenta quindi un importante indicatore de
 
 <p align="center"><img width="547" height="418" alt="Columbia Glacier" src="https://github.com/user-attachments/assets/8d042c35-0369-4356-83c1-5371437bc134">
 
-###  📌 Obiettivo dello studio
+##  📌 Obiettivo dello studio
 
 Analizzare l'evoluzione superficiale del Columbia Glacier tra **settembre 2020**, **settembre 2021** e **settembre 2023** tramite:
 - visualizzazione RGB delle immagini;
 - calcolo del **Normalized Difference Snow Index (NDSI)**;
+- calcolo del **Normalized Difference Water Index (NDWI)**;
 - classificazione non supervisionata delle principali coperture superficiali;
-- confronto quantitativo delle percentuali di copertura delle classi;
-- analisi delle componenti principali (PCA);
-- stima dell'eterogeneità spaziale mediante deviazione standard locale della prima componente principale.
+- confronto quantitativo delle percentuali di copertura delle classi.
 
 ---
 
 # 🛰️ Materiali e metodi
 
-## Dataset
-
-Sono state utilizzate tre immagini satellitari Landsat acquisite nei mesi di settembre degli anni:
-
-- Settembre 2020
-- Settembre 2021
-- Settembre 2023
-
-# 1. Preparazione delle immagini
-
-Le immagini satellitari vengono importate come oggetti `SpatRaster` e ritagliate utilizzando il perimetro del ghiacciaio. (fonte)
+Pacchetti R utilizzati nelle analisi:
 
 ```r
+library(terra)      # gestione dei raster e operazioni spaziali
+library(viridis)    # palette cromatiche
+library(RStoolbox)  # classificazione non supervisionata e PCA
+library(glacieR)    #
+```
+
+ **glacieR** ➡️ **https://github.com/sandrasigismondi/glacieR**
+ 
+ <img width="54" height="54" alt="glacieR_logo" src="https://github.com/user-attachments/assets/f9e15aed-e81c-4156-9ea3-90b75071ed5c" />
+
+Immagini satellitari scaricate da Google Earth Engine, landsat, a 20m con bande 2, 3, 4, 8, 11 e 12.
+```r
+# Ritaglio da shapefile
+
+columbia <- vect("columbia_riproiettato.shp")
+
+# Importazione
+
 sep2020 <- rast("columbia_september2020.tif")
 sep2020_mask <- prepareGlacier(sep2020, columbia)
 
@@ -52,58 +59,31 @@ sep2023 <- rast("columbia_september2023.tif")
 sep2023_mask <- prepareGlacier(sep2023, columbia)
 ```
 
-
----
-
-## Software
-
-L'intera analisi è stata svolta in **R** con i seguenti pacchetti:
-
-```r
-library(terra)      # gestione dei raster e operazioni spaziali
-library(viridis)    # palette cromatiche
-library(RStoolbox)  # classificazione non supervisionata e PCA
-```
-
-utilizzando il pacchetto **glacieR**, disponibile al seguente link:
-
-➡️ **https://github.com/sandrasigismondi/glacieR**
-
-<img width="54" height="54" alt="glacieR_logo" src="https://github.com/user-attachments/assets/f9e15aed-e81c-4156-9ea3-90b75071ed5c" />
-
----
-
-## Analisi
-- visualizzazione RGB;
-- calcolo dell'indice NDSI;
-- classificazione non supervisionata in tre classi;
-- calcolo delle percentuali di copertura;
-- rappresentazione grafica delle variazioni temporali
-
 ---
 
 # 📊 Risultati
 
-## Immagini RGB
+## Visualizzazione RGB
 
-Per ogni anno viene costruita una composizione a colori reali (RGB), utile per una prima valutazione visiva dello stato del ghiacciaio.
 
 ```r
-plotGlacierRGB(sep2020_mask, r = 3, g = 2, b = 1)
-plotGlacierRGB(sep2021_mask, r = 3, g = 2, b = 1)
-plotGlacierRGB(sep2023_mask, r = 3, g = 2, b = 1)
+# bande
+
+plotGlacierRGB(sep2020_mask, r = 3, g = 2, b = 1, title = "Settembre 2020")
+plotGlacierRGB(sep2021_mask, r = 3, g = 2, b = 1, title = "Settembre 2021")
+plotGlacierRGB(sep2023_mask, r = 3, g = 2, b = 1, title = "Settembre 2023")
 ```
 
-<p align="center"><img width="727" height="294" alt="plotGlacierRGB" src="https://github.com/user-attachments/assets/709993e4-223e-4f50-a365-8abca989ef3e" />
+<p align="center"><img width="727" height="327" alt="plotRGBsettembre" src="https://github.com/user-attachments/assets/b9f6b39a-7e22-4dc2-a4d2-b7565e91e531" />
 
 ---
 
 ## Calcolo del NDSI
 
-L'indice **NDSI (Normalized Difference Snow Index)** permette di evidenziare neve e ghiaccio pulito.
-
 ```r
-ndsi_sep2020 <- glacierNDSI(sep2020_mask, green = 2, swir = 5)
+# bande
+
+ndsi_sep2020 <- glacierNDSI(sep2020_mask, green = 2, swir = 5)  # bande
 ndsi_sep2021 <- glacierNDSI(sep2021_mask, green = 2, swir = 5)
 ndsi_sep2023 <- glacierNDSI(sep2023_mask, green = 2, swir = 5)
 
@@ -112,17 +92,15 @@ plotNDSI(ndsi_sep2021)
 plotNDSI(ndsi_sep2023)
 ```
 
-Valori elevati di NDSI identificano principalmente neve e ghiaccio pulito, mentre valori bassi corrispondono a ghiaccio coperto da detrito, rocce o acqua.
-
 <p align="center"><img width="727" height="217" alt="plotNDSI" src="https://github.com/user-attachments/assets/029969e3-886d-4e9e-b0e3-53be1b25d9dd" />
 
 ---
 
 ## Calcolo dell'NDWI
 
-L'indice **NDWI (Normalized Difference Water Index)** viene utilizzato per individuare la presenza di acqua superficiale e acqua di fusione.
-
 ```r
+# bande
+
 ndwi_sep2020 <- glacierNDWI(sep2020_mask, green = 3, nir = 5)
 ndwi_sep2021 <- glacierNDWI(sep2021_mask, green = 3, nir = 5)
 ndwi_sep2023 <- glacierNDWI(sep2023_mask, green = 3, nir = 5)
@@ -132,19 +110,15 @@ plotNDWI(ndwi_sep2021)
 plotNDWI(ndwi_sep2023)
 ```
 
-Valori elevati indicano la presenza di acqua liquida, mentre valori inferiori sono associati a neve, ghiaccio e superfici rocciose.
-
 <p align="center"><img width="727" height="213" alt="plotNDWI" src="https://github.com/user-attachments/assets/b18d0538-65e3-4663-8065-9371a99d986b" />
-
 
 ---
 
-
 ## Classificazione non supervisionata
 
-Per ogni immagine è stata eseguita una classificazione non supervisionata mediante algoritmo **k-means**, suddividendo la superficie glaciale in tre classi spettrali.
-
 ```r
+# 3 classi
+
 class_sep2020 <- glacierClass(sep2020_mask, nClasses = 3)
 class_sep2021 <- glacierClass(sep2021_mask, nClasses = 3)
 class_sep2023 <- glacierClass(sep2023_mask, nClasses = 3)
@@ -153,12 +127,6 @@ plotClass(class_sep2020)
 plotClass(class_sep2021)
 plotClass(class_sep2023)
 ```
-
-Le classi sono state successivamente associate alle seguenti categorie:
-
-- Superfici scure
-- Ghiaccio coperto da detrito
-- Neve / ghiaccio pulito
 
 <p align="center">
 
@@ -213,4 +181,4 @@ Tali metodologie costituiscono un valido supporto per il monitoraggio degli effe
 
 - Columbia glacier shapefile: https://sealevel.nasa.gov/vesl/web/glaciers/columbia/
 - Documentazione Sentinel-2 ESA - [Google Earth Engine](https://earthengine.google.com/)
--  NASA Earth Observatory. *World of Change: Columbia Glacier*.
+-  NASA Earth Observatory. *World of Change: Columbia Glacier*. https://science.nasa.gov/earth/earth-observatory/world-of-change/columbia-glacier/
