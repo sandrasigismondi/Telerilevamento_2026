@@ -117,9 +117,9 @@ nomi <-c("Superfici a bassa riflettanza", "Ghiaccio con detriti", "Ghiaccio puli
 
 # Visualizzazione delle mappe riclassificate
 
-plot(class2020, col=colori, main="2020")
-plot(class2021, col=colori, main="2021")
-plot(class2023, col=colori, main="2023")
+plot(class2020, col=colori, main="Settembre 2020")
+plot(class2021, col=colori, main="Settembre 2021")
+plot(class2023, col=colori, main="Settembre 2023")
 
 # legend() aggiunge la legenda
 
