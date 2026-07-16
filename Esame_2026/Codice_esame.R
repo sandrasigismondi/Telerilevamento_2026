@@ -47,9 +47,9 @@ plotNDSI(ndsi_sep2023, title = "NDSI - Settembre 2023")
 
 
 # NDWI
-ndwi_sep2020 <- glacierNDWI(sep2020_mask, green = 3, nir = 5)
-ndwi_sep2021 <- glacierNDWI(sep2021_mask, green = 3, nir = 5)
-ndwi_sep2023 <- glacierNDWI(sep2023_mask, green = 3, nir = 5)
+ndwi_sep2020 <- glacierNDWI(sep2020_mask, green = 2, nir = 4)
+ndwi_sep2021 <- glacierNDWI(sep2021_mask, green = 2, nir = 4)
+ndwi_sep2023 <- glacierNDWI(sep2023_mask, green = 2, nir = 4)
 
 plotNDWI(ndwi_sep2020, title = "NDWI - Settembre 2020")
 plotNDWI(ndwi_sep2021, title = "NDWI - Settembre 2021")
