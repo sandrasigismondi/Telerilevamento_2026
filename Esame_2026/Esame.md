@@ -136,19 +136,12 @@ ndsi_diff_21_20 <- ndsi_sep2021 - ndsi_sep2020
 ndsi_diff_23_21 <- ndsi_sep2023 - ndsi_sep2021
 ndsi_diff_23_20 <- ndsi_sep2023 - ndsi_sep2020
 
-# plot() visualizza le differenze utilizzando la palette "inferno"
+# visualizza le differenze con la palette "inferno"
 
-plot(ndsi_diff_21_20,
-     col = inferno(200),
-     main = expression(Delta*"NDSI 2020-2021"))
+plot(ndsi_diff_21_20, col = inferno(200), main="ΔNDSI 2021 - 2020")
+plot(ndsi_diff_23_21, col = inferno(200), main="ΔNDSI 2023 - 2021")
+plot(ndsi_diff_23_20, col = inferno(200), main="ΔNDSI 2023 - 2020")
 
-plot(ndsi_diff_23_21,
-     col = inferno(200),
-     main = expression(Delta*"NDSI 2021-2023"))
-
-plot(ndsi_diff_23_20,
-     col = inferno(200),
-     main = expression(Delta*"NDSI 2020-2023"))
 ```
 
 <p align="center"><img width="1052" height="320" alt="plot_diffNDSI" src="https://github.com/user-attachments/assets/5bae9468-721e-40fc-82f0-1dd3b0f42519" />
