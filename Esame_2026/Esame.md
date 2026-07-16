@@ -192,7 +192,7 @@ plotNDWI(ndwi_sep2023, title = "NDWI - Settembre 2023")
 
 <p align="center"><img width="1052" height="337" alt="plotNDWI2" src="https://github.com/user-attachments/assets/6579bd91-c3cf-49b3-96aa-b9c24011e437" />
 
->Le tre mappe mostrano una distribuzione spaziale dell'NDWI complessivamente simile. Le differenze osservabili sono limitate e interessano soltanto alcune aree del ghiacciaio, suggerendo variazioni locali nella presenza di acqua superficiale o umidità della superficie.
+>La distribuzione spaziale dell'NDWI risulta sostanzialmente stabile nei tre anni analizzati. I valori più elevati corrispondono all'acqua presente nella baia antistante il ghiacciaio, mentre le variazioni osservabili interessano alcune aree prossime al fronte glaciale e ai margini della lingua, senza mostrare cambiamenti diffusi della superficie glaciale.
 
 ---
 
