@@ -21,7 +21,7 @@ Il ghiacciaio Columbia, situato nell'**Alaska meridionale** nei Monti Chugach, s
 
 Analizzare l'evoluzione superficiale del Columbia Glacier tra **settembre 2020**, **settembre 2021** e **settembre 2023** tramite:
 - visualizzazione RGB delle immagini;
-- calcolo del **Normalized Difference Snow Index (NDSI)** e analisi delle sue variazioni temporali
+- calcolo del **Normalized Difference Snow Index (NDSI)** e analisi delle sue variazioni temporali;
 - calcolo del **Normalized Difference Water Index (NDWI)**;
 - classificazione non supervisionata delle principali coperture superficiali;
 - confronto quantitativo delle percentuali di copertura delle classi.
