@@ -56,6 +56,18 @@ plotNDSI(ndsi_sep2020, title = "NDSI - Settembre 2020")
 plotNDSI(ndsi_sep2021, title = "NDSI - Settembre 2021")
 plotNDSI(ndsi_sep2023, title = "NDSI - Settembre 2023")
 
+# Differenza NDSI
+# Sottrazione delle mappe NDSI tra gli anni
+
+ndsi_diff_21_20 <- ndsi_sep2021 - ndsi_sep2020
+ndsi_diff_23_21 <- ndsi_sep2023 - ndsi_sep2021
+ndsi_diff_23_20 <- ndsi_sep2023 - ndsi_sep2020
+
+# visualizza le differenze con la palette "inferno"
+plot(ndsi_diff_21_20, col = inferno(200), main="ΔNDSI 2021 - 2020")
+plot(ndsi_diff_23_21, col = inferno(200), main="ΔNDSI 2023 - 2021")
+plot(ndsi_diff_23_20, col = inferno(200), main="ΔNDSI 2023 - 2020")
+
 
 # NDWI
 # glacierNDWI() calcola l'NDWI con la banda verde e la banda NIR
