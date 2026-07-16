@@ -1,7 +1,7 @@
 > ### Telerilevamento geo-ecologico in R
 >> Sandra Sigismondi
 
-# Analisi multitemporale del Columbia Glacier mediante telerilevamento in R / Evoluzione superficiale del Columbia Glacier (2020–2023) mediante immagini Sentinel-2
+# Evoluzione superficiale del Columbia Glacier (2020–2023) mediante immagini Sentinel-2
 
 # ⛰️ Introduzione
 
@@ -21,7 +21,7 @@ Il ghiacciaio Columbia, situato nell'**Alaska meridionale** nei Monti Chugach, s
 
 Analizzare l'evoluzione superficiale del Columbia Glacier tra **settembre 2020**, **settembre 2021** e **settembre 2023** tramite:
 - visualizzazione RGB delle immagini;
-- calcolo del **Normalized Difference Snow Index (NDSI)**;
+- calcolo del **Normalized Difference Snow Index (NDSI)** e analisi delle sue variazioni temporali
 - calcolo del **Normalized Difference Water Index (NDWI)**;
 - classificazione non supervisionata delle principali coperture superficiali;
 - confronto quantitativo delle percentuali di copertura delle classi.
@@ -151,7 +151,7 @@ plot(ndsi_diff_23_20,
      main = expression(Delta*"NDSI 2020-2023"))
 ```
 
-<p align="center"><img width="1052" height="331" alt="plot_diffNDSI" src="https://github.com/user-attachments/assets/50a8148d-8286-48f6-af37-efb1362f06bf" />
+<p align="center"><img width="1052" height="320" alt="plot_diffNDSI" src="https://github.com/user-attachments/assets/5bae9468-721e-40fc-82f0-1dd3b0f42519" />
 
 Le differenze di NDSI risultano generalmente contenute, indicando una sostanziale stabilità della distribuzione della neve e del ghiaccio durante il periodo analizzato. Le variazioni più evidenti sono localizzate lungo la 
 Il confronto 2020–2023 evidenzia modifiche più marcate rispetto ai confronti annuali, suggerendo un'evoluzione graduale della superficie glaciale nel corso dell'intero periodo di studio.
