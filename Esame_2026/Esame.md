@@ -39,12 +39,10 @@ library(RStoolbox)  # Classificazione non supervisionata
 library(glacieR)    # Strumenti per l'analisi dei ghiacciai tramite telerilevamento
 ```
 
-info su **glacieR** ➡️ **https://github.com/sandrasigismondi/glacieR**
+><img width="34" height="34" alt="glacieR_logo" src="https://github.com/user-attachments/assets/f191e9ef-6fba-4b5b-abd1-b7376044796e" /> Repository del pacchetto **glacieR** ➡️ **https://github.com/sandrasigismondi/glacieR**
  
- <img width="54" height="54" alt="glacieR_logo" src="https://github.com/user-attachments/assets/f9e15aed-e81c-4156-9ea3-90b75071ed5c" />
 
-
-Immagini Sentinel-2 Surface Reflectance Harmonized scaricate da [Google Earth Engine](https://earthengine.google.com/) con risoluzione spaziale di 20 m. Sono state esportate le bande presenti in tabella.
+Sono state utilizzate immagini Sentinel-2 Surface Reflectance Harmonized scaricate da [Google Earth Engine](https://earthengine.google.com/) con risoluzione spaziale di 20 m. Sono state esportate le bande presenti in tabella.
 
 | Banda | Colore | R |
 | :---: | :---: | :--- |
