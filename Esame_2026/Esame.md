@@ -119,7 +119,7 @@ plotNDSI(ndsi_sep2023, title = "NDSI - Settembre 2023")
 
 <p align="center"><img width="727" height="217" alt="plotNDSI" src="https://github.com/user-attachments/assets/029969e3-886d-4e9e-b0e3-53be1b25d9dd" />
 
-Le differenze più evidenti nella distribuzione dell'NDSI riguardano il 2021, che presenta una maggiore presenza di valori medio-bassi rispetto al 2020 e al 2023, indicando una riduzione delle superfici caratterizzate da neve e ghiaccio pulito.
+In tutti gli anni predominano valori elevati, indicativi di un'ampia copertura di ghiaccio e/o neve. I valori più bassi si concentrano principalmente lungo la lingua glaciale.
 
 ---
 
