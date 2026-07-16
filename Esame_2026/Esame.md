@@ -93,7 +93,7 @@ plotGlacierRGB(sep2021_mask, r = 3, g = 2, b = 1, title = "Settembre 2021")
 plotGlacierRGB(sep2023_mask, r = 3, g = 2, b = 1, title = "Settembre 2023")
 ```
 
-<p align="center"><img width="727" height="327" alt="plotRGBsettembre" src="https://github.com/user-attachments/assets/b9f6b39a-7e22-4dc2-a4d2-b7565e91e531" />
+<p align="center"><img width="1052" height="452" alt="plotRGB2" src="https://github.com/user-attachments/assets/a7094e1c-704d-400d-b85b-7a0afc730cbe" />
 
 >Le aree innevate e coperte da ghiaccio appaiono prevalentemente bianche, le superfici detritiche assumono tonalità grigio-scure, mentre i corpi idrici risultano molto scuri. Le differenze più evidenti si osservano in corrispondenza della lingua glaciale, che mostra un progressivo arretramento tra il 2020 e il 2023.
 
@@ -121,9 +121,40 @@ plotNDSI(ndsi_sep2021, title = "NDSI - Settembre 2021")
 plotNDSI(ndsi_sep2023, title = "NDSI - Settembre 2023")
 ```
 
-<p align="center"><img width="727" height="217" alt="plotNDSI" src="https://github.com/user-attachments/assets/029969e3-886d-4e9e-b0e3-53be1b25d9dd" />
+<p align="center"><img width="1052" height="347" alt="plotNDSI2" src="https://github.com/user-attachments/assets/6e20e205-be6c-4683-b5e6-cab47c86cddd" />
 
 >In tutti gli anni predominano valori elevati, indicativi di un'ampia copertura di ghiaccio e/o neve. I valori più bassi si concentrano principalmente nelle zone in cui ci sono affioramenti rocciosi.
+
+## Variazioni di NDSI nel tempo
+
+Per evidenziare le variazioni della copertura nivale e glaciale nel tempo è stata calcolata la differenza tra le mappe NDSI dei diversi anni. Valori positivi indicano un aumento dell'NDSI, mentre valori negativi indicano una sua diminuzione.
+
+```r
+# Sottrazione delle mappe NDSI tra gli anni
+
+ndsi_diff_21_20 <- ndsi_sep2021 - ndsi_sep2020
+ndsi_diff_23_21 <- ndsi_sep2023 - ndsi_sep2021
+ndsi_diff_23_20 <- ndsi_sep2023 - ndsi_sep2020
+
+# plot() visualizza le differenze utilizzando la palette "inferno"
+
+plot(ndsi_diff_21_20,
+     col = inferno(200),
+     main = expression(Delta*"NDSI 2020-2021"))
+
+plot(ndsi_diff_23_21,
+     col = inferno(200),
+     main = expression(Delta*"NDSI 2021-2023"))
+
+plot(ndsi_diff_23_20,
+     col = inferno(200),
+     main = expression(Delta*"NDSI 2020-2023"))
+```
+
+<p align="center"><img width="1052" height="331" alt="plot_diffNDSI" src="https://github.com/user-attachments/assets/50a8148d-8286-48f6-af37-efb1362f06bf" />
+
+Le differenze di NDSI risultano generalmente contenute, indicando una sostanziale stabilità della distribuzione della neve e del ghiaccio durante il periodo analizzato. Le variazioni più evidenti sono localizzate lungo la 
+Il confronto 2020–2023 evidenzia modifiche più marcate rispetto ai confronti annuali, suggerendo un'evoluzione graduale della superficie glaciale nel corso dell'intero periodo di studio.
 
 ---
 
@@ -149,7 +180,7 @@ plotNDWI(ndwi_sep2021, title = "NDWI - Settembre 2021")
 plotNDWI(ndwi_sep2023, title = "NDWI - Settembre 2023")
 ```
 
-<p align="center"><img width="727" height="244" alt="plotNDWI" src="https://github.com/user-attachments/assets/cc53183b-c730-4674-9b2a-e5d0c07841c6" />
+<p align="center"><img width="1052" height="337" alt="plotNDWI2" src="https://github.com/user-attachments/assets/6579bd91-c3cf-49b3-96aa-b9c24011e437" />
 
 >Le tre mappe mostrano una distribuzione spaziale dell'NDWI piuttosto simile. Le differenze osservabili sono localizzate in prossimità del fronte glaciale e delle aree di drenaggio.
 
@@ -173,7 +204,7 @@ plotClass(class_sep2021)
 plotClass(class_sep2023)
 ```
 
-<p align="center"><img width="727" height="245" alt="plotClass_again" src="https://github.com/user-attachments/assets/8a5d4411-55ba-432d-9027-66ce16adae47" />
+<p align="center"><img width="1052" height="327" alt="plotClass2" src="https://github.com/user-attachments/assets/5317b8a1-d58d-4ccd-957d-d05d40b5d290" />
 
 >La classificazione individua tre gruppi spettralmente distinti. Poiché l'algoritmo assegna i numeri delle classi in modo arbitrario e indipendente per ciascun anno, le etichette numeriche non risultano direttamente confrontabili tra le diverse immagini.
 
@@ -209,7 +240,7 @@ legend("bottomleft",  # Posizione della legenda
 
 ```
 
-<p align="center"><img width="727" height="382" alt="plotClass_riclassificato" src="https://github.com/user-attachments/assets/cce39584-540d-4c08-919d-62f6e60fe23e" />
+<p align="center"><img width="1052" height="428" alt="plotClass_2_legenda" src="https://github.com/user-attachments/assets/a5dd8ad6-5d7b-46de-850a-e2f58a08138d" />
 
 >Le tre mappe mostrano una distribuzione spaziale complessivamente coerente delle principali coperture superficiali del ghiacciaio. La classe attribuita al ghiaccio pulito/neve interessa prevalentemente le porzioni più elevate del ghiacciaio, mentre le superfici rocciose risultano concentrate nelle aree periferiche prive di copertura glaciale. La classe identificata come ghiaccio sporco, detriti o superfici umide si distribuisce principalmente lungo la lingua glaciale e nelle zone prossime al fronte.
 
