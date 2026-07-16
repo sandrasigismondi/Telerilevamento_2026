@@ -91,14 +91,11 @@ plotGlacierRGB(sep2023_mask, r = 3, g = 2, b = 1, title = "Settembre 2023")
 
 # Calcolo del NDSI
 
-valori prossimi a 1 indicano neve o ghiaccio pulito; valori prossimi a 0 o negativi identificano rocce, detrito o acqua.
+Questo indice evidenzia la presenza di neve e ghiaccio. Valori elevati (prossimi a 1) sono tipici di neve e ghiaccio pulito, mentre valori bassi o negativi sono generalmente associati a rocce, detrito, acqua o superfici prive di copertura nevosa.
 
 $$
 NDSI=\frac{Green-SWIR}{Green+SWIR}
 $$
-
-neve e ghiaccio pulito → valori elevati
-rocce/acqua → valori bassi
 
 ```r
 # bande
@@ -113,6 +110,8 @@ plotNDSI(ndsi_sep2023)
 ```
 
 <p align="center"><img width="727" height="217" alt="plotNDSI" src="https://github.com/user-attachments/assets/029969e3-886d-4e9e-b0e3-53be1b25d9dd" />
+
+Le differenze più evidenti riguardano il 2021, che presenta una maggiore presenza di valori medio-bassi rispetto al 2020 e al 2023, indicando una riduzione delle superfici caratterizzate da neve e ghiaccio pulito.
 
 ---
 
