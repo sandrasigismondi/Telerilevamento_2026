@@ -119,7 +119,7 @@ plotNDSI(ndsi_sep2023, title = "NDSI - Settembre 2023")
 
 <p align="center"><img width="727" height="217" alt="plotNDSI" src="https://github.com/user-attachments/assets/029969e3-886d-4e9e-b0e3-53be1b25d9dd" />
 
-In tutti gli anni predominano valori elevati, indicativi di un'ampia copertura di ghiaccio e/o neve. I valori più bassi si concentrano principalmente lungo la lingua glaciale.
+In tutti gli anni predominano valori elevati, indicativi di un'ampia copertura di ghiaccio e/o neve. I valori più bassi si concentrano principalmente nelle zone in cui ci sono affioramenti rocciosi.
 
 ---
 
@@ -153,7 +153,7 @@ Le tre mappe mostrano una distribuzione spaziale dell'NDWI piuttosto simile. Le 
 
 # Classificazione non supervisionata
 
-È stata applicata una classificazione non supervisionata mediante algoritmo k-means, specificando tre classi. L'algoritmo raggruppa automaticamente i pixel in base alla loro similarità spettrale, senza utilizzare campioni di addestramento. Successivamente le classi sono state interpretate come superfici scure, ghiaccio coperto da detrito e neve/ghiaccio pulito.
+È stata applicata una classificazione non supervisionata mediante algoritmo k-means, specificando tre classi. L'algoritmo raggruppa automaticamente i pixel in base alla loro similarità spettrale, senza utilizzare campioni di addestramento. Successivamente le classi sono state interpretate come superfici scure (ghiaccio sporco / detriti / acqua"), roccia e ghiaccio pulito/neve.
 
 ```r
 # glacierClass() 
@@ -170,6 +170,38 @@ plotClass(class_sep2023)
 ```
 
 <p align="center"><img width="727" height="245" alt="plotClass_again" src="https://github.com/user-attachments/assets/8a5d4411-55ba-432d-9027-66ce16adae47" />
+
+## Riclassificazione
+
+```r
+# subst()
+
+class2020 <- subst(class_sep2020$map, from = c(1, 2, 3), to = c(1, 3, 2))
+class2021 <- subst(class_sep2021$map, from = c(1, 2, 3), to = c(1, 2, 3))
+class2023 <- subst(class_sep2023$map, from = c(1, 2, 3), to = c(1, 2, 3))
+
+# rinomino una concatenazione di colori e di nomi così da aggiungerli in legenda
+
+colori <- viridis(3, option = "E")
+nomi <-c("Ghiaccio sporco / Detriti / Acqua", "Roccia", "Ghiaccio pulito / Neve")
+
+plot(class2020, col=colori, main="2020")
+plot(class2021, col=colori, main="2021")
+plot(class2023, col=colori, main="2023")
+
+# legen() mostra la legenda
+
+legend("bottomleft", 
+       legend = nomi, 
+       fill = colori, 
+       bg = "white",
+       xpd = TRUE)
+
+```
+
+<p align="center"><img width="727" height="385" alt="plotClass_riclassificata" src="https://github.com/user-attachments/assets/03f2d5fe-994e-418b-a70b-e82057d2d020" />
+
+commento
 
 ---
 
