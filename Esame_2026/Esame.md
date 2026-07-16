@@ -33,10 +33,10 @@ Analizzare l'evoluzione superficiale del Columbia Glacier tra **settembre 2020**
 Pacchetti R utilizzati nelle analisi:
 
 ```r
-library(terra)      # gestione dei raster e operazioni spaziali
-library(viridis)    # palette cromatiche
-library(RStoolbox)  # classificazione non supervisionata e PCA
-library(glacieR)    #
+library(terra)      # Gestione dei raster e shapefile, operazioni spaziali e funzioni di visualizzazione
+library(viridis)    # Palette cromatiche
+library(RStoolbox)  # Classificazione non supervisionata
+library(glacieR)    # Strumenti per l'analisi dei ghiacciai tramite telerilevamento
 ```
 
  **glacieR** ➡️ **https://github.com/sandrasigismondi/glacieR**
@@ -55,20 +55,24 @@ Immagini Sentinel-2 Surface Reflectance Harmonized scaricate da [Google Earth En
 | **B12** | SWIR 2 | [[6]] |
 
 ```r
-# Ritaglio da shapefile
+# vect() importa lo shapefile come oggetto SpatVector
 
 columbia <- vect("columbia_riproiettato.shp")
 
-# Importazione
+# rast() importa le immagini Sentinel-2 come oggetti SpatRaster
 
 sep2020 <- rast("columbia_september2020.tif")
-sep2020_mask <- prepareGlacier(sep2020, columbia)
-
 sep2021 <- rast("columbia_september2021.tif")
-sep2021_mask <- prepareGlacier(sep2021, columbia)
-
 sep2023 <- rast("columbia_september2023.tif")
+
+# prepareGlacier() utilizza internamente:
+# - crop(): ritaglia il raster all'estensione dello shapefile
+# - mask()): elimina i pixel esterni al contorno del ghiacciaio
+
+sep2020_mask <- prepareGlacier(sep2020, columbia)
+sep2021_mask <- prepareGlacier(sep2021, columbia)
 sep2023_mask <- prepareGlacier(sep2023, columbia)
+
 ```
 
 ---
@@ -76,9 +80,9 @@ sep2023_mask <- prepareGlacier(sep2023, columbia)
 # Visualizzazione RGB
 
 ```r
-par(mfrow = c(1,3))   # 
+par(mfrow = c(1,3))   # Dispone i grafici in una finestra con 1 riga e 3 colonne
 
-# bande
+# plotglacier() visualizza l'immagine in composizione RGB naturale: r = rosso, g = verde, b = blu
 
 plotGlacierRGB(sep2020_mask, r = 3, g = 2, b = 1, title = "Settembre 2020")
 plotGlacierRGB(sep2021_mask, r = 3, g = 2, b = 1, title = "Settembre 2021")
@@ -87,9 +91,11 @@ plotGlacierRGB(sep2023_mask, r = 3, g = 2, b = 1, title = "Settembre 2023")
 
 <p align="center"><img width="727" height="327" alt="plotRGBsettembre" src="https://github.com/user-attachments/assets/b9f6b39a-7e22-4dc2-a4d2-b7565e91e531" />
 
+Le aree innevate e coperte da ghiaccio appaiono prevalentemente bianche, le superfici detritiche assumono tonalità grigio-scure, mentre i corpi idrici risultano molto scuri. Le differenze più evidenti si osservano in corrispondenza della lingua glaciale, che mostra un progressivo arretramento tra il 2020 e il 2023.
+
 ---
 
-# Calcolo del NDSI
+# NDSI - Normalized Difference Snow Index
 
 Questo indice evidenzia la presenza di neve e ghiaccio. Valori elevati (prossimi a 1) sono tipici di neve e ghiaccio pulito, mentre valori bassi o negativi sono generalmente associati a rocce, detrito, acqua o superfici prive di copertura nevosa.
 
@@ -98,11 +104,13 @@ NDSI=\frac{Green-SWIR}{Green+SWIR}
 $$
 
 ```r
-# bande
+# glacierNDSI() calcola l'NDSI con la banda verde e la banda SWIR
 
 ndsi_sep2020 <- glacierNDSI(sep2020_mask, green = 2, swir = 5)
 ndsi_sep2021 <- glacierNDSI(sep2021_mask, green = 2, swir = 5)
 ndsi_sep2023 <- glacierNDSI(sep2023_mask, green = 2, swir = 5)
+
+# plotNDSI() visualizza le mappe NDSI
 
 plotNDSI(ndsi_sep2020)
 plotNDSI(ndsi_sep2021)
@@ -111,11 +119,11 @@ plotNDSI(ndsi_sep2023)
 
 <p align="center"><img width="727" height="217" alt="plotNDSI" src="https://github.com/user-attachments/assets/029969e3-886d-4e9e-b0e3-53be1b25d9dd" />
 
-Le differenze più evidenti riguardano il 2021, che presenta una maggiore presenza di valori medio-bassi rispetto al 2020 e al 2023, indicando una riduzione delle superfici caratterizzate da neve e ghiaccio pulito.
+Le aree innevate e coperte da ghiaccio appaiono prevalentemente bianche, le superfici detritiche assumono tonalità grigio-scure, mentre i corpi idrici risultano molto scuri. Le differenze più evidenti si osservano in corrispondenza della lingua glaciale, che mostra un progressivo arretramento tra il 2020 e il 2023.
 
 ---
 
-# Calcolo dell'NDWI
+# NDWI - Normalized Difference Water Index
 
 Questo indice evidenzia la presenza di acqua superficiale e di aree interessate dalla fusione della neve e del ghiaccio. Valori più elevati indicano superfici con maggiore presenza di acqua liquida, mentre valori bassi o negativi sono generalmente associati a rocce, detrito e superfici asciutte.
 
@@ -124,11 +132,13 @@ NDWI=\frac{Green-NIR}{Green+NIR}
 $$
 
 ```r
-# bande
+# glacierNDWI() calcola l'NDWI con la banda verde e la banda NIR
 
 ndwi_sep2020 <- glacierNDWI(sep2020_mask, green = 2, nir = 4)
 ndwi_sep2021 <- glacierNDWI(sep2021_mask, green = 2, nir = 4)
 ndwi_sep2023 <- glacierNDWI(sep2023_mask, green = 2, nir = 4)
+
+# plotNDWI() visualizza le mappe NDWI
 
 plotNDWI(ndwi_sep2020)
 plotNDWI(ndwi_sep2021)
