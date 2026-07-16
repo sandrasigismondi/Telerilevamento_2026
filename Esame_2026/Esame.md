@@ -58,12 +58,9 @@ Le immagini Sentinel-2 Surface Reflectance Harmonized sono state scaricate da [G
 | **B12** | SWIR 2 | Classificazione |
 
 ## Preparazione dei dati
-Per delimitare l'area di studio è stato utilizzato uno shapefile del Columbia Glacier, scaricato da [NASA Sea Level Change Portal](https://sealevel.nasa.gov/vesl/web/glaciers/columbia/). Successivamente sono state importate le immagini Sentinel-2 e ritagliate sull'area del ghiacciaio, mantenendo i pixel all'interno del suo perimetro.
+Dopo aver importato le immagini Sentinel-2, è stato utilizzato uno shapefile del Columbia Glacier per delimitare l'area di studio, scaricato da [NASA Sea Level Change Portal](https://sealevel.nasa.gov/vesl/web/glaciers/columbia/).
 
 ```r
-# vect() importa lo shapefile come oggetto SpatVector
-
-columbia <- vect("columbia_riproiettato.shp")
 
 # rast() importa le immagini Sentinel-2 come oggetti SpatRaster
 
@@ -71,13 +68,15 @@ sep2020 <- rast("columbia_september2020.tif")
 sep2021 <- rast("columbia_september2021.tif")
 sep2023 <- rast("columbia_september2023.tif")
 
-# prepareGlacier() utilizza internamente:
-# - crop(): ritaglia il raster all'estensione dello shapefile
-# - mask()): mantiene solo i pixel interni al contorno dello shapefile
 
-sep2020_mask <- prepareGlacier(sep2020, columbia)
-sep2021_mask <- prepareGlacier(sep2021, columbia)
-sep2023_mask <- prepareGlacier(sep2023, columbia)
+# prepareGlacier() utilizza internamente:
+# - vect(): importa lo shapefile come oggetto SpatVector
+# - crop(): ritaglia il raster all'estensione dello shapefile
+# - mask()): mantiene i pixel interni al perimetro dello shapefile
+
+sep2020_mask <- prepareGlacier(sep2020, "columbia_riproiettato.shp")
+sep2021_mask <- prepareGlacier(sep2021, "columbia_riproiettato.shp")
+sep2023_mask <- prepareGlacier(sep2023, "columbia_riproiettato.shp")
 
 ```
 
