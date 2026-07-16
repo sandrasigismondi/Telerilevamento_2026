@@ -39,9 +39,10 @@ library(RStoolbox)  # Classificazione non supervisionata
 library(glacieR)    # Strumenti per l'analisi dei ghiacciai tramite telerilevamento
 ```
 
- **glacieR** ➡️ **https://github.com/sandrasigismondi/glacieR**
+info su **glacieR** ➡️ **https://github.com/sandrasigismondi/glacieR**
  
  <img width="54" height="54" alt="glacieR_logo" src="https://github.com/user-attachments/assets/f9e15aed-e81c-4156-9ea3-90b75071ed5c" />
+
 
 Immagini Sentinel-2 Surface Reflectance Harmonized scaricate da [Google Earth Engine](https://earthengine.google.com/) con risoluzione spaziale di 20 m. Sono state esportate le bande presenti in tabella.
 
@@ -252,7 +253,7 @@ tabella
 | Ghiaccio con detriti | 26.99 | 23.76 | 26.64 |
 | Ghiaccio pulito e neve | 44.68 | 51.65 | 46.39 |
 
->La classe "Ghiaccio pulito e neve" è quella predominante in tutti gli anni. Le classi"Superfici a bassa riflettanza" e "Ghiaccio con detriti" presentano percentuali inferiori, con una lieve diminuzione nel 2021 e un successivo incremento nel 2023.
+>La classe "Ghiaccio pulito e neve" è quella predominante in tutti gli anni. Le classi "Superfici a bassa riflettanza" e "Ghiaccio con detriti" presentano percentuali inferiori, con una lieve diminuzione nel 2021 e un successivo incremento nel 2023.
 
 ---
 
