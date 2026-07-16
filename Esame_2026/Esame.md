@@ -304,6 +304,14 @@ tabella
 Per visualizzare in modo più intuitivo le differenze tra i tre anni, le frequenze relative percentuali delle classi sono state rappresentate mediante grafici a barre utilizzando il pacchetto **ggplot2**. I grafici sono stati successivamente affiancati tramite **patchwork**, così da facilitarne il confronto visivo.
 
 ```r
+# Crea un vettore di colori associando ogni classe a un colore della palette cividis
+
+colori <- c(
+  "Superfici a bassa riflettanza" = viridis::viridis(3, option = "E")[1],
+  "Ghiaccio con detriti"          = viridis::viridis(3, option = "E")[2],
+  "Ghiaccio pulito e neve"        = viridis::viridis(3, option = "E")[3]
+)
+
 # ggplot() crea il grafico specificando:
 # - i dati da utilizzare (tabella)
 # - l'asse x (classi)
