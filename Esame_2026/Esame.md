@@ -119,7 +119,7 @@ plotNDSI(ndsi_sep2023, title = "NDSI - Settembre 2023")
 
 <p align="center"><img width="727" height="217" alt="plotNDSI" src="https://github.com/user-attachments/assets/029969e3-886d-4e9e-b0e3-53be1b25d9dd" />
 
-Le aree innevate e coperte da ghiaccio appaiono prevalentemente bianche, le superfici detritiche assumono tonalità grigio-scure, mentre i corpi idrici risultano molto scuri. Le differenze più evidenti si osservano in corrispondenza della lingua glaciale, che mostra un progressivo arretramento tra il 2020 e il 2023.
+Le differenze più evidenti nella distribuzione dell'NDSI riguardano il 2021, che presenta una maggiore presenza di valori medio-bassi rispetto al 2020 e al 2023, indicando una riduzione delle superfici caratterizzate da neve e ghiaccio pulito.
 
 ---
 
@@ -169,7 +169,7 @@ plotClass(class_sep2021)
 plotClass(class_sep2023)
 ```
 
-<p align="center">
+<p align="center"><img width="727" height="245" alt="plotClass_again" src="https://github.com/user-attachments/assets/8a5d4411-55ba-432d-9027-66ce16adae47" />
 
 ---
 
