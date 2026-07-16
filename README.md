@@ -149,15 +149,7 @@ plotClass(class_sep2023)
 
 # 💬 Discussione
 
-L'analisi multitemporale evidenzia come il Columbia Glacier presenti variazioni nella distribuzione delle principali coperture superficiali tra il 2020 e il 2023.
 
-L'NDSI conferma la predominanza di valori elevati associati alla neve e al ghiaccio, mentre le classificazioni non supervisionate permettono di distinguere efficacemente tre macro-tipologie superficiali: superfici scure, ghiaccio ricoperto da detrito e neve/ghiaccio pulito.
-
-L'analisi PCA mostra che la quasi totalità della variabilità radiometrica è concentrata nella prima componente principale (>98%), indicando una forte ridondanza informativa tra le bande Landsat.
-
-L'analisi dell'eterogeneità evidenzia una lieve maggiore variabilità nel 2021 rispetto agli altri anni, probabilmente riconducibile a differenti condizioni superficiali, distribuzione del detrito o condizioni di illuminazione al momento dell'acquisizione.
-
-I risultati sono coerenti con quanto riportato dalla letteratura scientifica, che descrive il Columbia Glacier come un ghiacciaio in rapido ritiro caratterizzato da continue modificazioni morfologiche e da un'intensa dinamica di fusione e calving.
 
 ## Limiti dello studio
 
@@ -172,11 +164,8 @@ L'analisi presenta alcuni limiti:
 ---
 
 # 📎 Conclusione
-Questo lavoro dimostra come il telerilevamento multispettrale rappresenti uno strumento efficace per monitorare l'evoluzione dei ghiacciai.
 
-L'integrazione tra immagini RGB, indice NDSI, classificazione non supervisionata, PCA e analisi dell'eterogeneità consente di descrivere quantitativamente le variazioni superficiali del Columbia Glacier e di individuare differenze spaziali e temporali tra gli anni analizzati.
 
-Tali metodologie costituiscono un valido supporto per il monitoraggio degli effetti dei cambiamenti climatici sui ghiacciai e possono essere facilmente replicate su altri sistemi glaciali mediante dati satellitari liberamente disponibili.
 
 ---
 
