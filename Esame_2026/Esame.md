@@ -97,6 +97,21 @@ plotGlacierRGB(sep2023_mask, r = 3, g = 2, b = 1, title = "Settembre 2023")
 
 >Le aree innevate e coperte da ghiaccio appaiono prevalentemente bianche, le superfici detritiche assumono tonalità grigio-scure, mentre i corpi idrici risultano molto scuri. Le differenze più evidenti si osservano in corrispondenza della lingua glaciale, che mostra un progressivo arretramento tra il 2020 e il 2023.
 
+## Composizione a falsi colori (NIR-Red-Green)
+
+```r
+visualizza l'immagine in composizione a falsi colori:
+# r = NIR, g = rosso, b = verde
+
+plotGlacierRGB(sep2020_mask, 4, 3, 2, title = "Settembre 2020")
+plotGlacierRGB(sep2021_mask, 4, 3, 2, title = "Settembre 2021")
+plotGlacierRGB(sep2023_mask, 4, 3, 2, title = "Settembre 2023")
+
+```
+
+<p align="center"><img width="1052" height="432" alt="plotRGB_falsecolor" src="https://github.com/user-attachments/assets/7e3eba0c-b162-476d-8fe3-82e5dd161294" />
+>La vegetazione appare in tonalità rosse, mentre ghiaccio e neve risultano chiari.
+
 ---
 
 # NDSI - Normalized Difference Snow Index
@@ -146,7 +161,7 @@ plot(ndsi_diff_23_20, col = inferno(200), main="ΔNDSI 2023 - 2020")
 
 <p align="center"><img width="1052" height="320" alt="plot_diffNDSI" src="https://github.com/user-attachments/assets/5bae9468-721e-40fc-82f0-1dd3b0f42519" />
 
-Le differenze di NDSI risultano generalmente contenute, indicando una sostanziale stabilità della distribuzione della neve e del ghiaccio durante il periodo analizzato. Le variazioni più evidenti sono localizzate lungo la 
+Le differenze di NDSI risultano generalmente contenute, indicando una sostanziale stabilità della distribuzione della neve e del ghiaccio durante il periodo analizzato. Le variazioni più evidenti sono localizzate nelle aree periferiche del ghiacciaio e nelle zone di transizione tra ghiaccio pulito, ghiaccio con detriti e affioramenti rocciosi
 Il confronto 2020–2023 evidenzia modifiche più marcate rispetto ai confronti annuali, suggerendo un'evoluzione graduale della superficie glaciale nel corso dell'intero periodo di studio.
 
 ---
