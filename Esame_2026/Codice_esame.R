@@ -2,6 +2,8 @@
 library(terra)      # Gestione dei raster e shapefile, operazioni spaziali e funzioni di visualizzazione
 library(viridis)    # Palette cromatiche
 library(RStoolbox)  # Classificazione non supervisionata
+library(ggplot2)    #
+library(patchwork)  #
 library(glacieR)    # Strumenti per l'analisi dei ghiacciai tramite telerilevamento
 
 
@@ -140,3 +142,59 @@ tabella <- data.frame(
 tabella
 
 
+# Grafici delle frequenze percentuali
+
+# ggplot() crea il grafico specificando:
+# - i dati da utilizzare (tabella)
+# - l'asse x (classi)
+# - l'asse y (percentuale di copertura)
+# - il colore delle barre in base alla classe
+
+p2020 <- ggplot(tabella, aes(x = Class, y = Settembre2020, fill = Class)) +
+  
+  # geom_bar() costruisce il grafico a barre;
+  # stat = "identity" utilizza i valori riportati nella tabella
+  geom_bar(stat = "identity") +
+  
+  # ylim() imposta l'intervallo dell'asse y tra 0 e 100%
+  ylim(0,100) +
+  
+  # labs() aggiunge titolo e nomi degli assi
+  labs(title = "Settembre 2020",
+       x = "Classe",
+       y = "Copertura (%)") +
+  
+  # scale_fill_manual() assegna i colori definiti in precedenza alle classi
+  scale_fill_manual(values = colori) +
+  
+  # theme_minimal() applica un tema grafico essenziale
+  theme_minimal() +
+  
+  # theme() rimuove la legenda dal singolo grafico
+  theme(legend.position = "none")
+
+
+p2021 <- ggplot(tabella, aes(x = Class, y = Settembre2021, fill = Class)) +
+  geom_bar(stat = "identity") +
+  ylim(0,100) +
+  labs(title = "Settembre 2021",
+       x = "Classe",
+       y = "Copertura (%)") +
+  scale_fill_manual(values = colori) +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+
+p2023 <- ggplot(tabella, aes(x = Class, y = Settembre2023, fill = Class)) +
+  geom_bar(stat = "identity") +
+  ylim(0,100) +
+  labs(title = "Settembre 2023",
+       x = "Classe",
+       y = "Copertura (%)") +
+  scale_fill_manual(values = colori) +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+
+# patchwork affianca i tre grafici
+p2020 + p2021 + p2023
