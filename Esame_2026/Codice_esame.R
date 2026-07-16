@@ -70,27 +70,39 @@ plotNDWI(ndwi_sep2023, title = "NDWI - Settembre 2023")
 
 
 # Classificazione
-# glacierClass()
+# glacierClass() esegue una classificazione non supervisionata
 
-class_sep2020 <- glacierClass(sep2020_mask, nClasses = 3)
+class_sep2020 <- glacierClass(sep2020_mask, nClasses = 3) # Classificazione fatta su 3 classi
 class_sep2021 <- glacierClass(sep2021_mask, nClasses = 3)
 class_sep2023 <- glacierClass(sep2023_mask, nClasses = 3)
 
 # plotClass() visualizza la classificazione con la palette "cividis"
 
-plotClass(class_sep2020, title = "Settembre 2020")
-plotClass(class_sep2021, title = "Settembre 2021")
-plotClass(class_sep2023, title = "Settembre 2023")
+plotClass(class_sep2020)
+plotClass(class_sep2021)
+plotClass(class_sep2023)
 
-par(mfrow = c(1,1))
+# subst() riclassifica i valori delle classi
 
+class2020 <- subst(class_sep2020$map, from = c(1, 2, 3), to = c(1, 3, 2))
+class2021 <- subst(class_sep2021$map, from = c(1, 2, 3), to = c(1, 2, 3))
+class2023 <- subst(class_sep2023$map, from = c(1, 2, 3), to = c(1, 2, 3))
 
+# Palette "cividis" e nome delle classi
 
+colori <- viridis(3, option = "E")
+nomi <-c("Superfici a bassa riflettanza", "Ghiaccio con detriti", "Ghiaccio pulito e neve")
 
+# Visualizzazione delle mappe riclassificate
 
+plot(class2020, col=colori, main="2020")
+plot(class2021, col=colori, main="2021")
+plot(class2023, col=colori, main="2023")
 
+# legend() aggiunge la legenda
 
-
-
-
-
+legend("bottomleft",  # Posizione della legenda
+       legend = nomi, # Eticchette delle classi
+       fill = colori, # Colori associati alle classi
+       bg = "white",  # Sfondo
+       xpd = TRUE)    # Consente di disegnare la legenda anche fuori dal grafico
