@@ -153,7 +153,7 @@ ndsi_diff_21_20 <- ndsi_sep2021 - ndsi_sep2020
 ndsi_diff_23_21 <- ndsi_sep2023 - ndsi_sep2021
 ndsi_diff_23_20 <- ndsi_sep2023 - ndsi_sep2020
 
-# visualizza le differenze con la palette "inferno"
+# Visualizza le differenze con la palette "inferno"
 
 plot(ndsi_diff_21_20, col = inferno(200), main="ΔNDSI 2021 - 2020")
 plot(ndsi_diff_23_21, col = inferno(200), main="ΔNDSI 2023 - 2021")
@@ -361,7 +361,7 @@ p2020 + p2021 + p2023
 
 ```
 
-<img width="1795" height="708" alt="barplot" src="https://github.com/user-attachments/assets/f7c19068-9f82-4a5e-9194-045e9aa8a043" />
+<img width="1795" height="708" alt="barplot" src="https://github.com/user-attachments/assets/70203328-dc7d-4022-8e5e-c1e1642f1c24" />
 
 ---
 
