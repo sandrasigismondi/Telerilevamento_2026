@@ -37,7 +37,7 @@ library(terra)      # Gestione dei raster e shapefile, operazioni spaziali e fun
 library(viridis)    # Palette cromatiche
 library(RStoolbox)  # Classificazione non supervisionata
 library(ggplot2)    # Realizzazione di grafici statistici
-library(patchwork)  # Composizione e affiancamento di grafici.
+library(patchwork)  # Composizione e affiancamento di grafici
 library(glacieR)    # Strumenti per l'analisi dei ghiacciai tramite telerilevamento
 ```
 
@@ -299,7 +299,7 @@ tabella
 
 >La classe "Ghiaccio pulito e neve" è quella predominante in tutti gli anni. Le classi "Superfici a bassa riflettanza" e "Ghiaccio con detriti" presentano percentuali inferiori, con una lieve diminuzione nel 2021 e un successivo incremento nel 2023.
 
-## Grafici a barre
+## Grafici a barre delle classi
 
 Per visualizzare in modo più intuitivo le differenze tra i tre anni, le frequenze relative percentuali delle classi sono state rappresentate mediante grafici a barre utilizzando il pacchetto **ggplot2**. I grafici sono stati successivamente affiancati tramite **patchwork**, così da facilitarne il confronto visivo.
 
