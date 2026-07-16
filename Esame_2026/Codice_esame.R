@@ -13,11 +13,6 @@ setwd("C:\\Users\\fabis\\Downloads\\Uni\\SGN Magistrale\\Telerilevamento Geo-Eco
 list.files()
 
 
-# vect() importa lo shapefile come oggetto SpatVector
-
-columbia <- vect("columbia_riproiettato.shp")
-
-
 # rast() importa le immagini Sentinel-2 come oggetti SpatRaster
 
 sep2020 <- rast("columbia_september2020.tif")
@@ -26,12 +21,13 @@ sep2023 <- rast("columbia_september2023.tif")
 
 
 # prepareGlacier() utilizza internamente:
+# - vect(): importa lo shapefile come oggetto SpatVector
 # - crop(): ritaglia il raster all'estensione dello shapefile
-# - mask()): elimina i pixel esterni al contorno del ghiacciaio
+# - mask()): mantiene i pixel interni al perimetro dello shapefile
 
-sep2020_mask <- prepareGlacier(sep2020, columbia)
-sep2021_mask <- prepareGlacier(sep2021, columbia)
-sep2023_mask <- prepareGlacier(sep2023, columbia)
+sep2020_mask <- prepareGlacier(sep2020, "columbia_riproiettato.shp")
+sep2021_mask <- prepareGlacier(sep2021, "columbia_riproiettato.shp")
+sep2023_mask <- prepareGlacier(sep2023, "columbia_riproiettato.shp")
 
 
 par(mfrow = c(1,3)) # Dispone i grafici in una finestra con 1 riga e 3 colonne
