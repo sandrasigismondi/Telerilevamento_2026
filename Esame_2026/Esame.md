@@ -36,8 +36,8 @@ Analizzare l'evoluzione superficiale del Columbia Glacier tra **settembre 2020**
 library(terra)      # Gestione dei raster e shapefile, operazioni spaziali e funzioni di visualizzazione
 library(viridis)    # Palette cromatiche
 library(RStoolbox)  # Classificazione non supervisionata
-library(ggplot2)    #
-library(patchwork)  #
+library(ggplot2)    # Realizzazione di grafici statistici
+library(patchwork)  # Composizione e affiancamento di grafici.
 library(glacieR)    # Strumenti per l'analisi dei ghiacciai tramite telerilevamento
 ```
 
@@ -321,11 +321,10 @@ p2020 + p2021 + p2023
 ```
 
 <img width="1795" height="708" alt="barplot" src="https://github.com/user-attachments/assets/f7c19068-9f82-4a5e-9194-045e9aa8a043" />
->
 
 ---
 
-# 📊 Discussione
+# 📊 Discussione e Conclusione
 
 argomento
 
