@@ -153,12 +153,12 @@ Le tre mappe mostrano una distribuzione spaziale dell'NDWI piuttosto simile. Le 
 
 # Classificazione non supervisionata
 
-È stata applicata una classificazione non supervisionata mediante algoritmo k-means, specificando tre classi. L'algoritmo raggruppa automaticamente i pixel in base alla loro similarità spettrale, senza utilizzare campioni di addestramento. Successivamente le classi sono state interpretate come superfici scure (ghiaccio sporco / detriti / acqua"), roccia e ghiaccio pulito/neve.
+È stata applicata una classificazione non supervisionata mediante algoritmo k-means, specificando tre classi. L'algoritmo raggruppa automaticamente i pixel in base alla loro similarità spettrale, senza utilizzare campioni di addestramento. L'utilizzo di tutte le bande multispettrali di Sentinel-2 permette di sfruttare un numero maggiore di informazioni rispetto alla sola immagine RGB o a un singolo indice spettrale.
 
 ```r
-# glacierClass() 
+# glacierClass() esegue una classificazione non supervisionata
 
-class_sep2020 <- glacierClass(sep2020_mask, nClasses = 3)
+class_sep2020 <- glacierClass(sep2020_mask, nClasses = 3) # Classificazione fatta su 3 classi
 class_sep2021 <- glacierClass(sep2021_mask, nClasses = 3)
 class_sep2023 <- glacierClass(sep2023_mask, nClasses = 3)
 
@@ -171,37 +171,43 @@ plotClass(class_sep2023)
 
 <p align="center"><img width="727" height="245" alt="plotClass_again" src="https://github.com/user-attachments/assets/8a5d4411-55ba-432d-9027-66ce16adae47" />
 
+La classificazione individua tre gruppi spettralmente distinti. Poiché l'algoritmo assegna i numeri delle classi in modo arbitrario e indipendente per ciascun anno, le etichette numeriche non risultano direttamente confrontabili tra le diverse immagini.
+
 ## Riclassificazione
 
+Per rendere confrontabili i risultati ottenuti nei tre anni, le etichette numeriche sono state uniformate mantenendo la stessa corrispondenza tra numero di classe e tipologia di superficie.
+
 ```r
-# subst()
+# subst() riclassifica i valori delle classi
 
 class2020 <- subst(class_sep2020$map, from = c(1, 2, 3), to = c(1, 3, 2))
 class2021 <- subst(class_sep2021$map, from = c(1, 2, 3), to = c(1, 2, 3))
 class2023 <- subst(class_sep2023$map, from = c(1, 2, 3), to = c(1, 2, 3))
 
-# rinomino una concatenazione di colori e di nomi così da aggiungerli in legenda
+# Palette "cividis" e nome delle classi
 
 colori <- viridis(3, option = "E")
-nomi <-c("Ghiaccio sporco / Detriti / Acqua", "Roccia", "Ghiaccio pulito / Neve")
+nomi <-c("Superfici a bassa riflettanza", "Ghiaccio con detriti", "Ghiaccio pulito e neve")
+
+# Visualizzazione delle mappe riclassificate
 
 plot(class2020, col=colori, main="2020")
 plot(class2021, col=colori, main="2021")
 plot(class2023, col=colori, main="2023")
 
-# legen() mostra la legenda
+# legend() aggiunge la legenda
 
-legend("bottomleft", 
-       legend = nomi, 
-       fill = colori, 
-       bg = "white",
-       xpd = TRUE)
+legend("bottomleft",  # Posizione della legenda
+       legend = nomi, # Eticchette delle classi
+       fill = colori, # Colori associati alle classi
+       bg = "white",  # Sfondo
+       xpd = TRUE)    # Consente di disegnare la legenda anche fuori dal grafico
 
 ```
 
-<p align="center"><img width="727" height="385" alt="plotClass_riclassificata" src="https://github.com/user-attachments/assets/03f2d5fe-994e-418b-a70b-e82057d2d020" />
+<p align="center"><img width="727" height="382" alt="plotClass_riclassificato" src="https://github.com/user-attachments/assets/cce39584-540d-4c08-919d-62f6e60fe23e" />
 
-commento
+Le tre mappe mostrano una distribuzione spaziale complessivamente coerente delle principali coperture superficiali del ghiacciaio. La classe attribuita al ghiaccio pulito/neve interessa prevalentemente le porzioni più elevate del ghiacciaio, mentre le superfici rocciose risultano concentrate nelle aree periferiche prive di copertura glaciale. La classe identificata come ghiaccio sporco, detriti o superfici umide si distribuisce principalmente lungo la lingua glaciale e nelle zone prossime al fronte.
 
 ---
 
