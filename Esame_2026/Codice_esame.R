@@ -45,10 +45,6 @@ plotNDSI(ndsi_sep2020, title = "NDSI - Settembre 2020")
 plotNDSI(ndsi_sep2021, title = "NDSI - Settembre 2021")
 plotNDSI(ndsi_sep2023, title = "NDSI - Settembre 2023")
 
-hist(ndsi_sep2020, breaks = 100, main = "NDSI", xlab = "NDSI")
-hist(ndsi_sep2021, breaks = 100, main = "NDSI", xlab = "NDSI")
-hist(ndsi_sep2023, breaks = 100, main = "NDSI", xlab = "NDSI")
-
 
 # NDWI
 ndwi_sep2020 <- glacierNDWI(sep2020_mask, green = 3, nir = 5)
