@@ -110,6 +110,7 @@ plotGlacierRGB(sep2023_mask, 4, 3, 2, title = "Settembre 2023")
 ```
 
 <p align="center"><img width="1052" height="432" alt="plotRGB_falsecolor" src="https://github.com/user-attachments/assets/7e3eba0c-b162-476d-8fe3-82e5dd161294" />
+
 >La vegetazione appare in tonalità rosse, mentre ghiaccio e neve risultano chiari.
 
 ---
