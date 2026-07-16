@@ -235,9 +235,9 @@ nomi <-c("Superfici a bassa riflettanza", "Ghiaccio con detriti", "Ghiaccio puli
 
 # Visualizzazione delle mappe riclassificate
 
-plot(class2020, col=colori, main="2020")
-plot(class2021, col=colori, main="2021")
-plot(class2023, col=colori, main="2023")
+plot(class2020, col=colori, main="Settembre 2020")
+plot(class2021, col=colori, main="Settembre 2021")
+plot(class2023, col=colori, main="Settembre 2023")
 
 # legend() aggiunge la legenda
 
@@ -249,7 +249,7 @@ legend("bottomleft",  # Posizione della legenda
 
 ```
 
-<p align="center"><img width="1052" height="428" alt="plotClass_2_legenda" src="https://github.com/user-attachments/assets/a5dd8ad6-5d7b-46de-850a-e2f58a08138d" />
+<p align="center"><img width="1052" height="421" alt="plotClass_legenda2" src="https://github.com/user-attachments/assets/7bda08c1-3201-4044-96b7-309e3aa851a6" />
 
 >Le tre mappe mostrano una distribuzione spaziale complessivamente coerente delle principali coperture superficiali del ghiacciaio. La classe attribuita al ghiaccio pulito/neve interessa prevalentemente le porzioni più elevate del ghiacciaio, mentre le superfici rocciose risultano concentrate nelle aree periferiche prive di copertura glaciale. La classe identificata come ghiaccio sporco, detriti o superfici umide si distribuisce principalmente lungo la lingua glaciale e nelle zone prossime al fronte.
 
