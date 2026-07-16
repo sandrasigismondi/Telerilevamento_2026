@@ -25,9 +25,9 @@ sep2023 <- rast("columbia_september2023.tif")
 # - crop(): ritaglia il raster all'estensione dello shapefile
 # - mask()): mantiene i pixel interni al perimetro dello shapefile
 
-sep2020_mask <- prepareGlacier(sep2020, "columbia_riproiettato.shp")
-sep2021_mask <- prepareGlacier(sep2021, "columbia_riproiettato.shp")
-sep2023_mask <- prepareGlacier(sep2023, "columbia_riproiettato.shp")
+sep2020_mask <- prepareGlacier(sep2020, "columbia.shp")
+sep2021_mask <- prepareGlacier(sep2021, "columbia.shp")
+sep2023_mask <- prepareGlacier(sep2023, "columbia.shp")
 
 
 par(mfrow = c(1,3)) # Dispone i grafici in una finestra con 1 riga e 3 colonne
