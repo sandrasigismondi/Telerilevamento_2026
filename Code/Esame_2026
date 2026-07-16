@@ -1,115 +1,135 @@
+# Pacchetti
 library(terra)
-library(imageRy)
 library(ggplot2)
-library(patchwork)
 library(viridis)
 library(RStoolbox)
+library(glacieR)
+
+
+# Cartella di lavoro
 
 setwd("C:\\Users\\fabis\\Downloads\\Uni\\SGN Magistrale\\Telerilevamento Geo-Eco in R")
 list.files()
 
-# March 2019
-march2019 <- rast("columbia_march2019.tif")
-
 columbia <- vect("columbia_riproiettato.shp")
-march2019_crop <- crop(march2019, columbia)
-march2019_mask <- mask(march2019_crop, columbia)
 
-plotRGB(march2019_mask, r=3, g=2, b=1, stretch="lin")
+# Importa e ritaglia
 
-ndsi_march2019 <- (march2019_mask[[2]] - march2019_mask[[5]]) / (march2019_mask[[2]] + march2019_mask[[5]])
-plot(ndsi_march2019)
-plot(ndsi_march2019, col = mako(200), main = "NDSI - Marzo 2019")
-hist(ndsi_march2019, breaks = 100, main = "Distribuzione NDSI", xlab = "NDSI")
+sep2020 <- rast("columbia_september2020.tif")
+sep2020_mask <- prepareGlacier(sep2020, columbia)
 
-class_march2019 <- unsuperClass(march2019_mask, nClasses = 3)
+sep2021 <- rast("columbia_september2021.tif")
+sep2021_mask <- prepareGlacier(sep2021, columbia)
 
 
-# September 2019 NON C'è
-september2019 <- rast("columbia_september2019.tif")
-
-columbia <- vect("columbia_riproiettato.shp")
-september2019_crop <- crop(september2019, columbia)
-september2019_mask <- mask(september2019_crop, columbia)
-
-plotRGB(september2019_mask, r=3, g=2, b=1, stretch="lin")
+sep2023 <- rast("columbia_september2023.tif")
+sep2023_mask <- prepareGlacier(sep2023, columbia)
 
 
-# March 2021
-march2021 <- rast("columbia_march2021.tif")
+# Visualizzazione RGB
 
-columbia <- vect("columbia_riproiettato.shp")
-march2021_crop <- crop(march2021, columbia)
-march2021_mask <- mask(march2021_crop, columbia)
+par(mfrow = c(1,3))
 
-plotRGB(march2021_mask, r=3, g=2, b=1, stretch="lin")
-
-ndsi_march2021 <- (march2021_mask[[2]] - march2021_mask[[5]]) / (march2021_mask[[2]] + march2021_mask[[5]])
-plot(ndsi_march2021)
-plot(ndsi_march2021, col = mako(200), main = "NDSI - Marzo 2021")
-hist(ndsi_march2021, breaks = 100, main = "Distribuzione NDSI", xlab = "NDSI")
-
-class_march2021 <- unsuperClass(march2021_mask, nClasses = 3)
+plotGlacierRGB(sep2020_mask, r = 3, g = 2, b = 1, title = "Settembre 2020")
+plotGlacierRGB(sep2021_mask, r = 3, g = 2, b = 1, title = "Settembre 2021")
+plotGlacierRGB(sep2023_mask, r = 3, g = 2, b = 1, title = "Settembre 2023")
 
 
+# NDSI
+
+ndsi_sep2020 <- glacierNDSI(sep2020_mask, green = 2, swir = 5)
+ndsi_sep2021 <- glacierNDSI(sep2021_mask, green = 2, swir = 5)
+ndsi_sep2023 <- glacierNDSI(sep2023_mask, green = 2, swir = 5)
+
+plotNDSI(ndsi_sep2020, title = "NDSI - Settembre 2020")
+plotNDSI(ndsi_sep2021, title = "NDSI - Settembre 2021")
+plotNDSI(ndsi_sep2023, title = "NDSI - Settembre 2023")
+
+hist(ndsi_sep2020, breaks = 100, main = "NDSI", xlab = "NDSI")
+hist(ndsi_sep2021, breaks = 100, main = "NDSI", xlab = "NDSI")
+hist(ndsi_sep2023, breaks = 100, main = "NDSI", xlab = "NDSI")
 
 
+# NDWI
+ndwi_sep2020 <- glacierNDWI(sep2020_mask, green = 3, nir = 5)
+ndwi_sep2021 <- glacierNDWI(sep2021_mask, green = 3, nir = 5)
+ndwi_sep2023 <- glacierNDWI(sep2023_mask, green = 3, nir = 5)
 
-# September 2020
-september2020 <- rast("columbia_september2020.tif")
-
-columbia <- vect("columbia_riproiettato.shp")
-september2020_crop <- crop(september2020, columbia)
-september2020_mask <- mask(september2020_crop, columbia)
-
-plotRGB(september2020_mask, r = 3, g = 2, b = 1, stretch = "lin")
-
-ndsi_september2020 <- (september2020_mask[[2]] - september2020_mask[[5]]) / (september2020_mask[[2]] + september2020_mask[[5]])
-plot(ndsi_september2020)
-plot(ndsi_september2020, col = mako(200), main = "NDSI - Settembre 2020")
-hist(ndsi_september2020, breaks = 100, main = "Distribuzione NDSI", xlab = "NDSI")
-
-class_september2020 <- unsuperClass(september2020_mask, nClasses = 3)
-plot(class_september2020$map)
+plotNDWI(ndwi_sep2020, title = "NDWI - Settembre 2020")
+plotNDWI(ndwi_sep2021, title = "NDWI - Settembre 2021")
+plotNDWI(ndwi_sep2023, title = "NDWI - Settembre 2023")
 
 
-# September 2021
-september2021 <- rast("columbia_september2021.tif")
+# Classificazione
 
-columbia <- vect("columbia_riproiettato.shp")
-september2021_crop <- crop(september2021, columbia)
-september2021_mask <- mask(september2021_crop, columbia)
+class_sep2020 <- glacierClass(sep2020_mask, nClasses = 3)
+class_sep2021 <- glacierClass(sep2021_mask, nClasses = 3)
+class_sep2023 <- glacierClass(sep2023_mask, nClasses = 3)
 
-plotRGB(september2021_mask, r=3, g=2, b=1, stretch="lin")
+plotClass(class_sep2020, title = "Settembre 2020")
+plotClass(class_sep2021, title = "Settembre 2021")
+plotClass(class_sep2023, title = "Settembre 2023")
 
-ndsi_september2021 <- (september2021_mask[[2]] - september2021_mask[[5]]) / (september2021_mask[[2]] + september2021_mask[[5]])
-plot(ndsi_september2021)
-plot(ndsi_september2021, col = mako(200), main = "NDSI - Settembre 2021")
-hist(ndsi_september2021, breaks = 100, main = "Distribuzione NDSI", xlab = "NDSI")
-
-class_september2021 <- unsuperClass(september2021_mask, nClasses = 3)
-plot(class_september2021$map)
-
-# September 2023
-september2023 <- rast("columbia_september2023.tif")
-
-columbia <- vect("columbia_riproiettato.shp")
-september2023_crop <- crop(september2023, columbia)
-september2023_mask <- mask(september2023_crop, columbia)
-
-plotRGB(september2023_mask, r = 3, g = 2, b = 1, stretch = "lin")
-
-ndsi_september2023 <- (september2023_mask[[2]] - september2023_mask[[5]]) / (september2023_mask[[2]] + september2023_mask[[5]])
-plot(ndsi_september2023)
-plot(ndsi_september2023, col = mako(200), main = "NDSI - Settembre 2023")
-hist(ndsi_september2023, breaks = 100, main = "Distribuzione NDSI", xlab = "NDSI")
-
-class_september2023 <- unsuperClass(september2023_mask, nClasses = 3)
-plot(class_september2023$map)
+par(mfrow = c(1,1))
 
 
+#################################################
+# Class percentages
+#################################################
+
+class2020 <- class_sep2020$map
+class2021 <- class_sep2021$map
+class2023 <- class_sep2023$map
+
+freq2020 <- freq(class2020)
+freq2021 <- freq(class2021)
+freq2023 <- freq(class2023)
+
+perc2020 <- freq2020$count/sum(freq2020$count)*100
+perc2021 <- freq2021$count/sum(freq2021$count)*100
+perc2023 <- freq2023$count/sum(freq2023$count)*100
+
+round(perc2020,2)
+round(perc2021,2)
+round(perc2023,2)
 
 
+#################################################
+# Glacier surface
+#################################################
+
+pixelArea2020 <- prod(res(class2020))
+pixelArea2021 <- prod(res(class2021))
+pixelArea2023 <- prod(res(class2023))
+
+surface2020 <- freq2020$count*pixelArea2020
+surface2021 <- freq2021$count*pixelArea2021
+surface2023 <- freq2023$count*pixelArea2023
+
+surface2020
+surface2021
+surface2023
+
+# in km2
+surface2020_km2 <- surface2020/1000000
+surface2021_km2 <- surface2021/1000000
+surface2023_km2 <- surface2023/1000000
+
+
+#################################################
+# Summary table
+#################################################
+
+summaryTable <- data.frame(
+  Class = c("Dark surfaces",
+            "Debris-covered ice",
+            "Snow / Clean ice"),
+  September2020 = round(perc2020,2),
+  September2021 = round(perc2021,2),
+  September2023 = round(perc2023,2)
+)
+
+summaryTable
 
 
 
