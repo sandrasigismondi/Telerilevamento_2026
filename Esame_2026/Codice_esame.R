@@ -106,3 +106,37 @@ legend("bottomleft",  # Posizione della legenda
        fill = colori, # Colori associati alle classi
        bg = "white",  # Sfondo
        xpd = TRUE)    # Consente di disegnare la legenda anche fuori dal grafico
+
+
+# Analisi quantitativa delle classi
+#freq() calcola la frequenza assoluta dei pixel appartenenti a ciascuna classe
+
+f2020 <- freq(class2020)
+f2021 <- freq(class2021)
+f2023 <- freq(class2023)
+
+# Calcolo della percentuale di copertura di ogni classe rispetto al totale dei pixel classificati
+
+perc2020 <- (f2020$count / sum(f2020$count))*100
+perc2021 <- (f2021$count / sum(f2021$count))*100
+perc2023 <- (f2023$count / sum(f2023$count))*100
+
+# round() arrotonda le percentuali a due cifre decimali
+
+round(perc2020,2)
+round(perc2021,2)
+round(perc2023,2)
+
+# data.frame() crea una tabella riassuntiva con le percentuali di copertura per ciascun anno
+
+
+tabella <- data.frame(
+  Class = nomi,
+  Settembre2020 = round(perc2020,2),
+  Settembre2021 = round(perc2021,2),
+  Settembre2023 = round(perc2023,2)
+)
+
+tabella
+
+
