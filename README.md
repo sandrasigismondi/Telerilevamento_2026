@@ -66,10 +66,7 @@ sep2023_mask <- prepareGlacier(sep2023, columbia)
 
 ---
 
-# 📊 Risultati
-
-## Visualizzazione RGB
-
+# Visualizzazione RGB
 
 ```r
 # bande
@@ -83,7 +80,9 @@ plotGlacierRGB(sep2023_mask, r = 3, g = 2, b = 1, title = "Settembre 2023")
 
 ---
 
-## Calcolo del NDSI
+# Calcolo del NDSI
+
+come si fa
 
 ```r
 # bande
@@ -101,7 +100,9 @@ plotNDSI(ndsi_sep2023)
 
 ---
 
-## Calcolo dell'NDWI
+# Calcolo dell'NDWI
+
+come si fa
 
 ```r
 # bande
@@ -119,7 +120,7 @@ plotNDWI(ndwi_sep2023)
 
 ---
 
-## Classificazione non supervisionata
+# Classificazione non supervisionata
 
 ```r
 # 3 classi
@@ -137,23 +138,23 @@ plotClass(class_sep2023)
 
 ---
 
-## Analisi quantitativa delle classi
+# Analisi quantitativa delle classi
 
-
----
-
-### Percentuali di copertura
-
+argomento
 
 ---
 
-# 💬 Discussione
+# Percentuali di copertura
 
+argomento
 
+---
+
+# 📊 Discussione
+
+argomento
 
 ## Limiti dello studio
-
-L'analisi presenta alcuni limiti:
 
 - utilizzo di sole tre date di acquisizione;
 - classificazione non supervisionata soggetta a interpretazione;
@@ -163,9 +164,9 @@ L'analisi presenta alcuni limiti:
 
 ---
 
-# 📎 Conclusione
+# 🎯 Conclusione
 
-
+argomento
 
 ---
 
