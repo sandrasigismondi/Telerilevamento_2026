@@ -245,7 +245,7 @@ plot(class2023, col=colori, main="Settembre 2023")
 legend("bottomleft",  # Posizione della legenda
        legend = nomi, # Eticchette delle classi
        fill = colori, # Colori associati alle classi
-       bg = "white",  # Sfondo
+       bg = "white",  # Sfondo della legenda
        xpd = TRUE)    # Consente di disegnare la legenda anche fuori dal grafico
 
 ```
