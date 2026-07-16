@@ -1,1 +1,215 @@
+# Pacchetti
+library(terra)
+library(ggplot2)
+library(viridis)
+library(RStoolbox)
+library(glacieR)
 
+
+# Cartella di lavoro
+
+setwd("C:\\Users\\fabis\\Downloads\\Uni\\SGN Magistrale\\Telerilevamento Geo-Eco in R")
+list.files()
+
+columbia <- vect("columbia_riproiettato.shp")
+
+# Importa e ritaglia
+
+sep2020 <- rast("columbia_september2020.tif")
+sep2020_mask <- prepareGlacier(sep2020, columbia)
+
+sep2021 <- rast("columbia_september2021.tif")
+sep2021_mask <- prepareGlacier(sep2021, columbia)
+
+
+sep2023 <- rast("columbia_september2023.tif")
+sep2023_mask <- prepareGlacier(sep2023, columbia)
+
+
+# Visualizzazione RGB
+
+par(mfrow = c(1,3))
+
+plotGlacierRGB(sep2020_mask, r = 3, g = 2, b = 1, title = "Settembre 2020")
+plotGlacierRGB(sep2021_mask, r = 3, g = 2, b = 1, title = "Settembre 2021")
+plotGlacierRGB(sep2023_mask, r = 3, g = 2, b = 1, title = "Settembre 2023")
+
+
+# NDSI
+
+ndsi_sep2020 <- glacierNDSI(sep2020_mask, green = 2, swir = 5)
+ndsi_sep2021 <- glacierNDSI(sep2021_mask, green = 2, swir = 5)
+ndsi_sep2023 <- glacierNDSI(sep2023_mask, green = 2, swir = 5)
+
+plotNDSI(ndsi_sep2020, title = "NDSI - Settembre 2020")
+plotNDSI(ndsi_sep2021, title = "NDSI - Settembre 2021")
+plotNDSI(ndsi_sep2023, title = "NDSI - Settembre 2023")
+
+hist(ndsi_sep2020, breaks = 100, main = "NDSI", xlab = "NDSI")
+hist(ndsi_sep2021, breaks = 100, main = "NDSI", xlab = "NDSI")
+hist(ndsi_sep2023, breaks = 100, main = "NDSI", xlab = "NDSI")
+
+
+# NDWI
+ndwi_sep2020 <- glacierNDWI(sep2020_mask, green = 3, nir = 5)
+ndwi_sep2021 <- glacierNDWI(sep2021_mask, green = 3, nir = 5)
+ndwi_sep2023 <- glacierNDWI(sep2023_mask, green = 3, nir = 5)
+
+plotNDWI(ndwi_sep2020, title = "NDWI - Settembre 2020")
+plotNDWI(ndwi_sep2021, title = "NDWI - Settembre 2021")
+plotNDWI(ndwi_sep2023, title = "NDWI - Settembre 2023")
+
+
+# Classificazione
+
+class_sep2020 <- glacierClass(sep2020_mask, nClasses = 3)
+class_sep2021 <- glacierClass(sep2021_mask, nClasses = 3)
+class_sep2023 <- glacierClass(sep2023_mask, nClasses = 3)
+
+plotClass(class_sep2020, title = "Settembre 2020")
+plotClass(class_sep2021, title = "Settembre 2021")
+plotClass(class_sep2023, title = "Settembre 2023")
+
+par(mfrow = c(1,1))
+
+
+#################################################
+# Class percentages
+#################################################
+
+class2020 <- class_sep2020$map
+class2021 <- class_sep2021$map
+class2023 <- class_sep2023$map
+
+freq2020 <- freq(class2020)
+freq2021 <- freq(class2021)
+freq2023 <- freq(class2023)
+
+perc2020 <- freq2020$count/sum(freq2020$count)*100
+perc2021 <- freq2021$count/sum(freq2021$count)*100
+perc2023 <- freq2023$count/sum(freq2023$count)*100
+
+round(perc2020,2)
+round(perc2021,2)
+round(perc2023,2)
+
+
+#################################################
+# Glacier surface
+#################################################
+
+pixelArea2020 <- prod(res(class2020))
+pixelArea2021 <- prod(res(class2021))
+pixelArea2023 <- prod(res(class2023))
+
+surface2020 <- freq2020$count*pixelArea2020
+surface2021 <- freq2021$count*pixelArea2021
+surface2023 <- freq2023$count*pixelArea2023
+
+surface2020
+surface2021
+surface2023
+
+# in km2
+surface2020_km2 <- surface2020/1000000
+surface2021_km2 <- surface2021/1000000
+surface2023_km2 <- surface2023/1000000
+
+
+#################################################
+# Summary table
+#################################################
+
+summaryTable <- data.frame(
+  Class = c("Dark surfaces",
+            "Debris-covered ice",
+            "Snow / Clean ice"),
+  September2020 = round(perc2020,2),
+  September2021 = round(perc2021,2),
+  September2023 = round(perc2023,2)
+)
+
+summaryTable
+
+
+
+
+
+#######################################################################################################################################
+// ==============================================
+// Sentinel-2 Surface Reflectance - Cloud Masking and Visualization
+// https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED
+// ==============================================
+
+// ==============================================
+// Function to mask clouds using the QA60 band
+// Bits 10 and 11 correspond to opaque clouds and cirrus
+// ==============================================
+function maskS2clouds(image) {
+  var qa = image.select('QA60');
+  var cloudBitMask = 1 << 10;
+  var cirrusBitMask = 1 << 11;
+
+  // Keep only pixels where both cloud and cirrus bits are 0
+  var mask = qa.bitwiseAnd(cloudBitMask).eq(0)
+               .and(qa.bitwiseAnd(cirrusBitMask).eq(0));
+
+  // Apply the cloud mask and scale reflectance values (0–10000 ➝ 0–1)
+  return image.updateMask(mask).divide(10000);
+}
+
+// ==============================================
+// Load and Prepare the Image Collection
+// ==============================================
+
+// Load Sentinel-2 SR Harmonized collection (atmospherical correction already done)
+var collection = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
+                   .filterBounds(aoi)
+                   .filterDate('2019-09-01', '2019-09-30')              // Filter by date                                   // Filter by AOI
+                   .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 20)) // Only images with <20% cloud cover
+                   .map(maskS2clouds);                                  // Apply cloud masking
+
+// Print number of images available after filtering
+print('Number of images in collection:', collection.size());
+
+// ==============================================
+// Create a median composite from the collection
+// Useful when the AOI overlaps multiple scenes or frequent cloud cover
+// ==============================================
+var composite = collection.median().clip(aoi);
+
+// ==============================================
+// Visualization on the Map
+// ==============================================
+
+Map.centerObject(aoi, 10); // Zoom to the AOI
+
+// Display the first image of the collection (GEE does this by default)
+Map.addLayer(collection, {
+  bands: ['B4', 'B3', 'B2'],  // True color: Red, Green, Blue
+  min: 0,
+  max: 0.3
+}, 'First image of collection');
+
+// Display the median composite image
+Map.addLayer(composite, {
+  bands: ['B4', 'B3', 'B2'],
+  min: 0,
+  max: 0.3
+}, 'Median composite');
+
+// ==============================================
+// Export to Google Drive
+// ==============================================
+
+// Export the median composite
+Export.image.toDrive({
+  image: composite.select(['B2', 'B3', 'B4', 'B8', 'B11', 'B12']),  // Select RGB bands
+  description: 'columbia_september2019',
+  folder: 'GEE_exports',                        // Folder in Google Drive
+  fileNamePrefix: 'columbia_september2019',
+  region: aoi,
+  scale: 20,                                    // Sentinel-2 resolution
+  crs: 'EPSG:4326',
+  maxPixels: 1e13
+});
