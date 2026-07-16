@@ -30,7 +30,7 @@ Analizzare l'evoluzione superficiale del Columbia Glacier tra **settembre 2020**
 
 # 🛰️ Materiali e metodi
 
-Pacchetti R utilizzati nelle analisi:
+## Pacchetti R
 
 ```r
 library(terra)      # Gestione dei raster e shapefile, operazioni spaziali e funzioni di visualizzazione
@@ -40,18 +40,21 @@ library(glacieR)    # Strumenti per l'analisi dei ghiacciai tramite telerilevame
 ```
 
 ><img width="34" height="34" alt="glacieR_logo" src="https://github.com/user-attachments/assets/f191e9ef-6fba-4b5b-abd1-b7376044796e" /> Repository del pacchetto **glacieR** ➡️ **https://github.com/sandrasigismondi/glacieR**
- 
 
+## Dati satellitari
 Sono state utilizzate immagini Sentinel-2 Surface Reflectance Harmonized scaricate da [Google Earth Engine](https://earthengine.google.com/) con risoluzione spaziale di 20 m. Sono state esportate le bande presenti in tabella.
 
-| Banda | Colore | R |
-| :---: | :---: | :--- |
-| **B2** | Blu | [[1]] |
-| **B3** | Verde | [[2]] |
-| **B4** | Rosso | [[3]] |
-| **B8** | Vicino Infrarosso (NIR) | [[4]] |
-| **B11** | SWIR 1 | [[5]] |
-| **B12** | SWIR 2 | [[6]] |
+| **Banda** | **Descrizione** | **Utilizzo** |
+|:---:|:---|:---|
+| **B2** | Blu | RGB, classificazione |
+| **B3** | Verde | RGB, NDSI, NDWI, classificazione |
+| **B4** | Rosso | RGB, classificazione |
+| **B8** | Vicino Infrarosso (NIR) | NDWI, classificazione |
+| **B11** | SWIR 1 | NDSI, classificazione |
+| **B12** | SWIR 2 | Classificazione |
+
+## Preparazione dei dati
+Per delimitare l'area di studio è stato utilizzato uno shapefile del Columbia Glacier, scaricato da [NASA Sea Level Change Portal](https://sealevel.nasa.gov/vesl/web/glaciers/columbia/). Successivamente sono state importate le immagini Sentinel-2 e ritagliate sull'area del ghiacciaio, mantenendo i pixel all'interno del suo perimetro.
 
 ```r
 # vect() importa lo shapefile come oggetto SpatVector
@@ -66,7 +69,7 @@ sep2023 <- rast("columbia_september2023.tif")
 
 # prepareGlacier() utilizza internamente:
 # - crop(): ritaglia il raster all'estensione dello shapefile
-# - mask()): elimina i pixel esterni al contorno del ghiacciaio
+# - mask()): mantiene solo i pixel interni al contorno dello shapefile
 
 sep2020_mask <- prepareGlacier(sep2020, columbia)
 sep2021_mask <- prepareGlacier(sep2021, columbia)
