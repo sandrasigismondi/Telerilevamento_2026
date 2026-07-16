@@ -84,6 +84,10 @@ plotGlacierRGB(sep2023_mask, r = 3, g = 2, b = 1, title = "Settembre 2023")
 
 come si fa
 
+$$
+NDSI=\frac{Green-SWIR}{Green+SWIR}
+$$
+
 ```r
 # bande
 
@@ -103,6 +107,10 @@ plotNDSI(ndsi_sep2023)
 # Calcolo dell'NDWI
 
 come si fa
+
+$$
+NDWI=\frac{Green-NIR}{Green+NIR}
+$$
 
 ```r
 # bande
