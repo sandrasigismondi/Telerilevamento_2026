@@ -110,7 +110,7 @@ ndsi_sep2020 <- glacierNDSI(sep2020_mask, green = 2, swir = 5)
 ndsi_sep2021 <- glacierNDSI(sep2021_mask, green = 2, swir = 5)
 ndsi_sep2023 <- glacierNDSI(sep2023_mask, green = 2, swir = 5)
 
-# plotNDSI() visualizza le mappe NDSI
+# plotNDSI() visualizza le mappe NDSI con la palette "mako"
 
 plotNDSI(ndsi_sep2020)
 plotNDSI(ndsi_sep2021)
@@ -138,7 +138,7 @@ ndwi_sep2020 <- glacierNDWI(sep2020_mask, green = 2, nir = 4)
 ndwi_sep2021 <- glacierNDWI(sep2021_mask, green = 2, nir = 4)
 ndwi_sep2023 <- glacierNDWI(sep2023_mask, green = 2, nir = 4)
 
-# plotNDWI() visualizza le mappe NDWI
+# plotNDWI() visualizza le mappe NDWI con la palette "viridis"
 
 plotNDWI(ndwi_sep2020)
 plotNDWI(ndwi_sep2021)
@@ -156,11 +156,13 @@ Le tre mappe mostrano una distribuzione spaziale dell'NDWI piuttosto simile. Le 
 È stata applicata una classificazione non supervisionata mediante algoritmo k-means, specificando tre classi. L'algoritmo raggruppa automaticamente i pixel in base alla loro similarità spettrale, senza utilizzare campioni di addestramento. Successivamente le classi sono state interpretate come superfici scure, ghiaccio coperto da detrito e neve/ghiaccio pulito.
 
 ```r
-# 3 classi
+# glacierClass() 
 
 class_sep2020 <- glacierClass(sep2020_mask, nClasses = 3)
 class_sep2021 <- glacierClass(sep2021_mask, nClasses = 3)
 class_sep2023 <- glacierClass(sep2023_mask, nClasses = 3)
+
+# plotClass() visualizza la classificazione con la palette "cividis"
 
 plotClass(class_sep2020)
 plotClass(class_sep2021)
