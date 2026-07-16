@@ -41,7 +41,9 @@ library(patchwork)  # Composizione e affiancamento di grafici.
 library(glacieR)    # Strumenti per l'analisi dei ghiacciai tramite telerilevamento
 ```
 
-><img width="34" height="34" alt="glacieR_logo" src="https://github.com/user-attachments/assets/f191e9ef-6fba-4b5b-abd1-b7376044796e" /> Repository del pacchetto **glacieR** ➡️ **https://github.com/sandrasigismondi/glacieR**
+> [!NOTE]
+>
+> <img width="34" height="34" alt="glacieR_logo" src="https://github.com/user-attachments/assets/f191e9ef-6fba-4b5b-abd1-b7376044796e" /> Repository del pacchetto **glacieR** ➡️ **https://github.com/sandrasigismondi/glacieR**
 
 ## Dati satellitari
 Sono state utilizzate immagini Sentinel-2 Surface Reflectance Harmonized scaricate da [Google Earth Engine](https://earthengine.google.com/) con risoluzione spaziale di 20 m. Sono state esportate le bande presenti in tabella.
