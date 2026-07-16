@@ -112,9 +112,9 @@ ndsi_sep2023 <- glacierNDSI(sep2023_mask, green = 2, swir = 5)
 
 # plotNDSI() visualizza le mappe NDSI con la palette "mako"
 
-plotNDSI(ndsi_sep2020)
-plotNDSI(ndsi_sep2021)
-plotNDSI(ndsi_sep2023)
+plotNDSI(ndsi_sep2020, title = "NDSI - Settembre 2020")
+plotNDSI(ndsi_sep2021, title = "NDSI - Settembre 2021")
+plotNDSI(ndsi_sep2023, title = "NDSI - Settembre 2023")
 ```
 
 <p align="center"><img width="727" height="217" alt="plotNDSI" src="https://github.com/user-attachments/assets/029969e3-886d-4e9e-b0e3-53be1b25d9dd" />
@@ -140,9 +140,9 @@ ndwi_sep2023 <- glacierNDWI(sep2023_mask, green = 2, nir = 4)
 
 # plotNDWI() visualizza le mappe NDWI con la palette "viridis"
 
-plotNDWI(ndwi_sep2020)
-plotNDWI(ndwi_sep2021)
-plotNDWI(ndwi_sep2023)
+plotNDWI(ndwi_sep2020, title = "NDWI - Settembre 2020")
+plotNDWI(ndwi_sep2021, title = "NDWI - Settembre 2021")
+plotNDWI(ndwi_sep2023, title = "NDWI - Settembre 2023")
 ```
 
 <p align="center"><img width="727" height="244" alt="plotNDWI" src="https://github.com/user-attachments/assets/cc53183b-c730-4674-9b2a-e5d0c07841c6" />
