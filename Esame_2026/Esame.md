@@ -118,7 +118,7 @@ plotNDSI(ndsi_sep2023)
 
 # Calcolo dell'NDWI
 
-L'NDWI evidenzia la presenza di acqua superficiale e aree interessate da fusione della neve e del ghiaccio. Valori positivi indicano superfici con maggiore contenuto di acqua, mentre valori negativi sono tipici di ghiaccio asciutto, rocce e detrito.
+Questo indice evidenzia la presenza di acqua superficiale e di aree interessate dalla fusione della neve e del ghiaccio. Valori più elevati indicano superfici con maggiore presenza di acqua liquida, mentre valori bassi o negativi sono generalmente associati a rocce, detrito e superfici asciutte.
 
 $$
 NDWI=\frac{Green-NIR}{Green+NIR}
@@ -138,6 +138,7 @@ plotNDWI(ndwi_sep2023)
 
 <p align="center"><img width="727" height="244" alt="plotNDWI" src="https://github.com/user-attachments/assets/cc53183b-c730-4674-9b2a-e5d0c07841c6" />
 
+Le tre mappe mostrano una distribuzione spaziale dell'NDWI piuttosto simile. Le differenze osservabili sono localizzate in prossimità del fronte glaciale e delle aree di drenaggio.
 
 ---
 
