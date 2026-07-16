@@ -91,7 +91,7 @@ plotGlacierRGB(sep2023_mask, r = 3, g = 2, b = 1, title = "Settembre 2023")
 
 <p align="center"><img width="727" height="327" alt="plotRGBsettembre" src="https://github.com/user-attachments/assets/b9f6b39a-7e22-4dc2-a4d2-b7565e91e531" />
 
-Le aree innevate e coperte da ghiaccio appaiono prevalentemente bianche, le superfici detritiche assumono tonalità grigio-scure, mentre i corpi idrici risultano molto scuri. Le differenze più evidenti si osservano in corrispondenza della lingua glaciale, che mostra un progressivo arretramento tra il 2020 e il 2023.
+>Le aree innevate e coperte da ghiaccio appaiono prevalentemente bianche, le superfici detritiche assumono tonalità grigio-scure, mentre i corpi idrici risultano molto scuri. Le differenze più evidenti si osservano in corrispondenza della lingua glaciale, che mostra un progressivo arretramento tra il 2020 e il 2023.
 
 ---
 
@@ -119,7 +119,7 @@ plotNDSI(ndsi_sep2023, title = "NDSI - Settembre 2023")
 
 <p align="center"><img width="727" height="217" alt="plotNDSI" src="https://github.com/user-attachments/assets/029969e3-886d-4e9e-b0e3-53be1b25d9dd" />
 
-In tutti gli anni predominano valori elevati, indicativi di un'ampia copertura di ghiaccio e/o neve. I valori più bassi si concentrano principalmente nelle zone in cui ci sono affioramenti rocciosi.
+>In tutti gli anni predominano valori elevati, indicativi di un'ampia copertura di ghiaccio e/o neve. I valori più bassi si concentrano principalmente nelle zone in cui ci sono affioramenti rocciosi.
 
 ---
 
@@ -147,7 +147,7 @@ plotNDWI(ndwi_sep2023, title = "NDWI - Settembre 2023")
 
 <p align="center"><img width="727" height="244" alt="plotNDWI" src="https://github.com/user-attachments/assets/cc53183b-c730-4674-9b2a-e5d0c07841c6" />
 
-Le tre mappe mostrano una distribuzione spaziale dell'NDWI piuttosto simile. Le differenze osservabili sono localizzate in prossimità del fronte glaciale e delle aree di drenaggio.
+>Le tre mappe mostrano una distribuzione spaziale dell'NDWI piuttosto simile. Le differenze osservabili sono localizzate in prossimità del fronte glaciale e delle aree di drenaggio.
 
 ---
 
@@ -171,7 +171,7 @@ plotClass(class_sep2023)
 
 <p align="center"><img width="727" height="245" alt="plotClass_again" src="https://github.com/user-attachments/assets/8a5d4411-55ba-432d-9027-66ce16adae47" />
 
-La classificazione individua tre gruppi spettralmente distinti. Poiché l'algoritmo assegna i numeri delle classi in modo arbitrario e indipendente per ciascun anno, le etichette numeriche non risultano direttamente confrontabili tra le diverse immagini.
+>La classificazione individua tre gruppi spettralmente distinti. Poiché l'algoritmo assegna i numeri delle classi in modo arbitrario e indipendente per ciascun anno, le etichette numeriche non risultano direttamente confrontabili tra le diverse immagini.
 
 ## Riclassificazione
 
@@ -207,7 +207,7 @@ legend("bottomleft",  # Posizione della legenda
 
 <p align="center"><img width="727" height="382" alt="plotClass_riclassificato" src="https://github.com/user-attachments/assets/cce39584-540d-4c08-919d-62f6e60fe23e" />
 
-Le tre mappe mostrano una distribuzione spaziale complessivamente coerente delle principali coperture superficiali del ghiacciaio. La classe attribuita al ghiaccio pulito/neve interessa prevalentemente le porzioni più elevate del ghiacciaio, mentre le superfici rocciose risultano concentrate nelle aree periferiche prive di copertura glaciale. La classe identificata come ghiaccio sporco, detriti o superfici umide si distribuisce principalmente lungo la lingua glaciale e nelle zone prossime al fronte.
+>Le tre mappe mostrano una distribuzione spaziale complessivamente coerente delle principali coperture superficiali del ghiacciaio. La classe attribuita al ghiaccio pulito/neve interessa prevalentemente le porzioni più elevate del ghiacciaio, mentre le superfici rocciose risultano concentrate nelle aree periferiche prive di copertura glaciale. La classe identificata come ghiaccio sporco, detriti o superfici umide si distribuisce principalmente lungo la lingua glaciale e nelle zone prossime al fronte.
 
 ---
 
@@ -252,7 +252,7 @@ tabella
 | Ghiaccio con detriti | 26.99 | 23.76 | 26.64 |
 | Ghiaccio pulito e neve | 44.68 | 51.65 | 46.39 |
 
->La classe Ghiaccio pulito e neve è quella predominante in tutti gli anni. Le Superfici a bassa riflettanza e il Ghiaccio con detriti presentano percentuali inferiori e variazioni, con una lieve diminuzione nel 2021 e un successivo incremento nel 2023.
+>La classe "Ghiaccio pulito e neve" è quella predominante in tutti gli anni. Le classi"Superfici a bassa riflettanza" e "Ghiaccio con detriti" presentano percentuali inferiori, con una lieve diminuzione nel 2021 e un successivo incremento nel 2023.
 
 ---
 
