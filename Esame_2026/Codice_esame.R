@@ -2,8 +2,8 @@
 library(terra)      # Gestione dei raster e shapefile, operazioni spaziali e funzioni di visualizzazione
 library(viridis)    # Palette cromatiche
 library(RStoolbox)  # Classificazione non supervisionata
-library(ggplot2)    #
-library(patchwork)  #
+library(ggplot2)    # Realizzazione di grafici statistici
+library(patchwork)  # Composizione e affiancamento di grafici
 library(glacieR)    # Strumenti per l'analisi dei ghiacciai tramite telerilevamento
 
 
