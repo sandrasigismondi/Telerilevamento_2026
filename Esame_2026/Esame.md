@@ -127,16 +127,17 @@ $$
 ```r
 # bande
 
-ndwi_sep2020 <- glacierNDWI(sep2020_mask, green = 3, nir = 5)
-ndwi_sep2021 <- glacierNDWI(sep2021_mask, green = 3, nir = 5)
-ndwi_sep2023 <- glacierNDWI(sep2023_mask, green = 3, nir = 5)
+ndwi_sep2020 <- glacierNDWI(sep2020_mask, green = 2, nir = 4)
+ndwi_sep2021 <- glacierNDWI(sep2021_mask, green = 2, nir = 4)
+ndwi_sep2023 <- glacierNDWI(sep2023_mask, green = 2, nir = 4)
 
 plotNDWI(ndwi_sep2020)
 plotNDWI(ndwi_sep2021)
 plotNDWI(ndwi_sep2023)
 ```
 
-<p align="center"><img width="727" height="213" alt="plotNDWI" src="https://github.com/user-attachments/assets/b18d0538-65e3-4663-8065-9371a99d986b" />
+<p align="center"><img width="727" height="244" alt="plotNDWI" src="https://github.com/user-attachments/assets/cc53183b-c730-4674-9b2a-e5d0c07841c6" />
+
 
 ---
 
