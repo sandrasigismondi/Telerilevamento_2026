@@ -375,12 +375,13 @@ p2020 + p2021 + p2023
 
 # 🎯 Conclusione
 
-Le immagini RGB suggeriscono un progressivo arretramento della lingua glaciale, mentre gli indici NDSI e NDWI mostrano una distribuzione spaziale generalmente stabile, con variazioni concentrate nelle aree marginali del ghiacciaio e nelle zone di transizione tra ghiaccio, superfici detritiche e aree a bassa riflettanza. Anche l'analisi delle differenze di NDSI conferma che le modifiche risultano localizzate e più evidenti nel confronto tra il 2020 e il 2023.
-La classificazione non supervisionata ha consentito di distinguere tre principali classi di copertura superficiale: superfici a bassa riflettanza, ghiaccio con detriti e ghiaccio pulito e neve. L'analisi quantitativa evidenzia come la classe "ghiaccio pulito e neve" sia predominante durante tutto il periodo di studio, mentre le altre due classi mostrano variazioni percentuali contenute.
+Le immagini RGB suggeriscono un progressivo arretramento della lingua glaciale, mentre gli indici NDSI e NDWI mostrano una distribuzione spaziale generalmente stabile, con variazioni concentrate nelle aree marginali del ghiacciaio e nelle zone di transizione tra ghiaccio e aree a bassa riflettanza. Anche l'analisi delle differenze di NDSI conferma che le modifiche risultano localizzate e più evidenti nel confronto tra il 2020 e il 2023.
+La classificazione non supervisionata ha consentito di distinguere tre principali classi di copertura superficiale. L'analisi quantitativa evidenzia come la classe "ghiaccio pulito e neve" sia predominante durante tutto il periodo di studio, mentre le altre due classi mostrano variazioni percentuali contenute.
 
 Nel complesso, i risultati suggeriscono che tra il 2020 e il 2023 le **modifiche superficiali** del Columbia Glacier siano state modeste e localizzate, senza evidenziare variazioni spaziali estese della copertura glaciale nel mese di settembre.
 
-Tra i principali **limiti dello studio** rientrano l'utilizzo di sole tre acquisizioni satellitari, la classificazione non supervisionata priva di dati di validazione e la risoluzione spaziale di 20 m delle immagini Sentinel-2, che può non rappresentare dettagli superficiali di piccole dimensioni. Analisi future potrebbero integrare serie temporali più lunghe, dati ad alta risoluzione e procedure di validazione delle classificazioni per descrivere con maggiore accuratezza l'evoluzione del ghiacciaio.
+Tra i principali **limiti dello studio** rientrano l'utilizzo di sole tre acquisizioni satellitari, la classificazione non supervisionata priva di dati di validazione e la risoluzione spaziale di 20 m delle immagini Sentinel-2, che può non rappresentare dettagli superficiali di piccole dimensioni.
+Analisi future potrebbero integrare serie temporali più lunghe, dati ad alta risoluzione e procedure di validazione delle classificazioni per descrivere con maggiore accuratezza l'evoluzione del ghiacciaio.
 
 ---
 
