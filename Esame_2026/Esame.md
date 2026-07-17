@@ -7,7 +7,7 @@
 
 Il ghiacciaio Columbia, situato nell'**Alaska meridionale** nei Monti Chugach, si estende da un campo glaciale posto a circa **3050 m s.l.m.** fino a sfociare direttamente nelle acque del Prince William Sound. A partire dagli anni 80' ha subito un marcato **arretramento del fronte glaciale**: il ramo principale ha perso oltre 20 km di lunghezza e più della metà del proprio volume e spessore. Tale evoluzione è dovuta sia all'aumento delle temperature atmosferiche e oceaniche, sia a processi dinamici. In particolare, arretrando, il ghiacciaio ha perso il contatto con il banco morenico terminale che ne stabilizzava il fronte, favorendo il fenomeno del calving, ovvero il distacco di iceberg in mare. La conseguente **perdita di massa** contribuisce all'innalzamento del livello medio del mare e rappresenta quasi la metà della perdita di ghiaccio della catena montuosa dei Monti Chugach.
 
-<p align="center"><img width="500" height="250" alt="columbiaglacier_pho_201606" src="https://github.com/user-attachments/assets/6023d73b-2f6b-4b60-a53f-0b7da76d1e5b" />
+<p align="center"><img width="500" height="250" alt="columbiaglacier_pho_201606" src="https://github.com/user-attachments/assets/bb41cfab-828f-44fb-8243-7454e058f3b5" />
 
 **Monitorare** l'evoluzione dei ghiacciai è fondamentale per diversi motivi:
 - quantificare la perdita di massa glaciale;
@@ -15,7 +15,7 @@ Il ghiacciaio Columbia, situato nell'**Alaska meridionale** nei Monti Chugach, s
 - migliorare le stime del loro contributo all'innalzamento del livello del mare;
 - valutare gli effetti della fusione glaciale sugli ecosistemi costieri.
 
-<p align="center"><img width="597" height="468" alt="Earth_from_Space_Columbia_Glacier_Alaska (1)" src="https://github.com/user-attachments/assets/9d813cf7-fe24-4b74-aed7-8d54cccf40a3" />
+<p align="center"><img width="497" height="368" alt="Earth_from_Space_Columbia_Glacier_Alaska (1)" src="https://github.com/user-attachments/assets/1d77c70b-8b2d-42e9-821f-1e099c8bf75c" />
 
 
 ##  📌 Obiettivo dello studio
