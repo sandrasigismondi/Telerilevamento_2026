@@ -87,7 +87,7 @@ sep2023_mask <- prepareGlacier(sep2023, "columbia.shp")
 ```r
 par(mfrow = c(1,3))   # Dispone i grafici in una finestra con 1 riga e 3 colonne
 
-# plotglacier() visualizza l'immagine in composizione RGB naturale: r = rosso, g = verde, b = blu
+# plotGlacierRGB() visualizza l'immagine in composizione RGB naturale: r = rosso, g = verde, b = blu
 
 plotGlacierRGB(sep2020_mask, r = 3, g = 2, b = 1, title = "Settembre 2020")
 plotGlacierRGB(sep2021_mask, r = 3, g = 2, b = 1, title = "Settembre 2021")
