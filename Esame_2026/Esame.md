@@ -15,7 +15,8 @@ Il ghiacciaio Columbia, situato nell'**Alaska meridionale** nei Monti Chugach, s
 - migliorare le stime del loro contributo all'innalzamento del livello del mare;
 - valutare gli effetti della fusione glaciale sugli ecosistemi costieri.
 
-<p align="center"><img width="447" height="318" alt="Columbia Glacier" src="https://github.com/user-attachments/assets/8d042c35-0369-4356-83c1-5371437bc134">
+<p align="center"><img width="597" height="468" alt="Earth_from_Space_Columbia_Glacier_Alaska (1)" src="https://github.com/user-attachments/assets/9d813cf7-fe24-4b74-aed7-8d54cccf40a3" />
+
 
 ##  📌 Obiettivo dello studio
 
